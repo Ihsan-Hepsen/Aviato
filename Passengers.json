@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Johnny Thunder",
+    "age": 21,
+    "gender": "M",
+    "transit": true
+  },
+  {
+    "name": "Jessica Cooper",
+    "age": 23,
+    "gender": "F",
+    "transit": true
+  }
+]
