@@ -7,7 +7,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
 public class IntlFlightBrowsingSystemApplication {
-
     public static void main(String[] args) {
         ConfigurableApplicationContext context =
                 SpringApplication.run(IntlFlightBrowsingSystemApplication.class, args);
