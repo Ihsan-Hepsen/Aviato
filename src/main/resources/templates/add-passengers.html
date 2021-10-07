@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Passenger</title>
+</head>
+<body>
+<header>
+    <nav id="navbar">
+        <a th:href="@{../home}">Home</a>
+        <a th:href="@{../passengers}">Passengers</a>
+        <a th:href="@{../flights}">Flights</a>
+        <a class="current" th:href="@{../passengers/add}">Add Passenger</a>
+        <a th:href="@{../flights/add}">Add Flight</a>
+    </nav>
+</header>
+<h1>Add Passenger</h1>
+<form method="post">
+    <label for="name">Full Name</label>
+    <input id="name" type="text" name="name">
+    <label for="age">Age</label>
+    <input id="age" type="number" name="age">
+    <label for="gender">Gender</label>
+    <select id="gender" name="gender">
+        <option th:each="gender : ${genders}" th:value="${gender}" th:text="${gender.getGender()}" value="select gender">
+        </option>
+    </select>
+    <label for="transit">Transit Passenger?</label>
+    <select id="transit" name="isTransitPassenger">
+        <option>Yes</option>
+        <option>No</option>
+    </select>
+    <input type="submit" value="Add Passenger">
+</form>
+</body>
+</html>

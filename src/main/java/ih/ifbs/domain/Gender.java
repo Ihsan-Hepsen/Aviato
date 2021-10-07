@@ -5,8 +5,8 @@ public enum Gender {
 
     private final String gender;
 
-    Gender(String definition) {
-        this.gender = definition;
+    Gender(String gender) {
+        this.gender = gender;
     }
 
     public String getGender() {

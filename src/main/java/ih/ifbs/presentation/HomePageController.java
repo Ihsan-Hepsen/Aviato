@@ -8,12 +8,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/home")
-public class IndexPage {
-    private final Logger logger = LoggerFactory.getLogger(IndexPage.class);
+public class HomePageController {
+    private final Logger logger = LoggerFactory.getLogger(HomePageController.class);
 
     @GetMapping
     public String displayIndexPage() {
         logger.info("Index page is on display.");
         return "index";
+    }
+
+    @GetMapping("/passengers")
+    public String handleNavigation() {
+        return "redirect:/passengers";
     }
 }

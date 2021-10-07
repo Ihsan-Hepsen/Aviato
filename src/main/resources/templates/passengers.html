@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{../static/style-all.css}">
+    <title>Passengers</title>
+</head>
+<body>
+<header>
+    <nav id="navbar">
+        <a th:href="@{../home}">Home</a>
+        <a class="current" th:href="@{../passengers}">Passengers</a>
+        <a th:href="@{../flights}">Flights</a>
+        <a th:href="@{../passengers/add}">Add Passenger</a>
+        <a th:href="@{../flights/add}">Add Flight</a>
+    </nav>
+</header>
+<h1>All Passengers</h1>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Transit</th>
+        <th>Flights</th>
+    </tr>
+    <tr th:each="passenger : ${passengers}">
+        <td th:text="${passenger.getName()}"></td>
+        <td th:text="${passenger.getAge()}"></td>
+        <td th:text="${passenger.getGender()}"></td>
+        <td th:text="${passenger.isTransitPassenger()}"></td>
+        <td th:text="${passenger.getFlights().get(0).getDeparture()}"></td>
+        <td th:text="${passenger.getFlights().get(0).getArrival()}"></td>
+    </tr>
+</table>
+</body>
+</html>

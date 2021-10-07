@@ -33,8 +33,8 @@ public class Passenger {
         return age;
     }
 
-    public Gender getGender() {
-        return gender;
+    public String getGender() {
+        return gender.getGender();
     }
 
     public boolean isTransitPassenger() {
