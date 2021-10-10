@@ -29,8 +29,7 @@
         <td th:text="${passenger.getAge()}"></td>
         <td th:text="${passenger.getGender()}"></td>
         <td th:text="${passenger.isTransitPassenger()}"></td>
-        <td th:text="${passenger.getFlights().get(0).getDeparture()}"></td>
-        <td th:text="${passenger.getFlights().get(0).getArrival()}"></td>
+        <td th:text="${passenger.getNumberOfFlights()}"></td>
     </tr>
 </table>
 </body>

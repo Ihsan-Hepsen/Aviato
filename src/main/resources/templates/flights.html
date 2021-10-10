@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{../static/style-all.css}">
     <title>Flights</title>
 </head>
 <body>
@@ -15,5 +16,23 @@
     </nav>
 </header>
 <h1>Flights</h1>
+<table>
+    <tr>
+        <th>Airline</th>
+        <th>Flight</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Date</th>
+        <th>On Time</th>
+    </tr>
+    <tr th:each="flight : ${flights}">
+        <td th:text="${flight.getAirline()}"></td>
+        <td th:text="${flight.getFlightNumber()}"></td>
+        <td th:text="${flight.getDeparture()}"></td>
+        <td th:text="${flight.getArrival()}"></td>
+        <td th:text="${flight.getFlightSchedule()}"></td>
+        <td th:text="${flight.isOnTime()}"></td>
+    </tr>
+</table>
 </body>
 </html>

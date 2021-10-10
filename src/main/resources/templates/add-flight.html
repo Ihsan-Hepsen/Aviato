@@ -2,9 +2,42 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{../static/style-all.css}">
+    <link rel="stylesheet" href="../static/style-all.css">
     <title>Add Flight</title>
 </head>
 <body>
-<h1>Add flight</h1>
+<header>
+    <nav id="navbar">
+        <a th:href="@{../home}">Home</a>
+        <a th:href="@{../passengers}">Passengers</a>
+        <a th:href="@{../flights}">Flights</a>
+        <a th:href="@{../passengers/add}">Add Passenger</a>
+        <a class="current" th:href="@{../flights/add}">Add Flight</a>
+    </nav>
+</header>
+<h1>Add Flight</h1>
+<form method="post">
+    <label for="airline">Airline</label>
+    <input id="airline" name="airline" type="text">
+    <label for="flightNumber">Flight Number</label>
+    <input id="flightNumber" name="flightNumber" type="text">
+    <label for="flightType">Flight Type</label>
+    <select id="flightType" name="flightType">
+        <option th:each="type : ${types}" th:value="${type}" th:text="${type.getValue()}" value="flight type"></option>
+    </select>
+    <label for="departure">Departure</label>
+    <input id="departure" name="departure" type="text">
+    <label for="arrival">Arrival</label>
+    <input id="arrival" name="arrival" type="text">
+    <label for="date">Date</label>
+    <input id="date" name="scheduledOn" type="date">
+    <label>Flight Status</label>
+    <label for="flightStatus1">On Time</label>
+    <input id="flightStatus1" name="isOnTime" type="radio">
+    <label for="flightStatus2">Delayed</label>
+    <input id="flightStatus2" name="isOnTime" type="radio">
+    <input type="submit" value="Confirm Flight">
+</form>
 </body>
 </html>

@@ -33,8 +33,8 @@ public class Passenger {
         return age;
     }
 
-    public String getGender() {
-        return gender.getGender();
+    public Gender getGender() {
+        return gender;
     }
 
     public boolean isTransitPassenger() {
@@ -43,6 +43,10 @@ public class Passenger {
 
     public List<Flight> getFlights() {
         return flights;
+    }
+
+    public int getNumberOfFlights() {
+        return flights == null ? 0 : flights.size();
     }
 
     @Override

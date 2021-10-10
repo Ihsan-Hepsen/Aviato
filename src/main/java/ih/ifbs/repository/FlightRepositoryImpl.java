@@ -3,8 +3,9 @@ package ih.ifbs.repository;
 import ih.ifbs.domain.Airline;
 import ih.ifbs.domain.Flight;
 import ih.ifbs.domain.FlightType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,40 +14,44 @@ import java.util.List;
 public class FlightRepositoryImpl implements FlightRepository {
 
     private static final List<Flight> flights = new ArrayList<>();
+    private final Logger logger = LoggerFactory.getLogger(FlightRepositoryImpl.class);
     
     static {
         fillFlights();
     }
 
     private static void fillFlights() {
-        flights.add(new Flight(new Airline("Qantas Airlines", 134, 77),
-                "QF12", FlightType.COMM, "Los Angeles","Sydney",
+        flights.add(new Flight("Qantas Airlines", "QF12", FlightType.COMM,
+                "Los Angeles","Sydney",
                 LocalDate.of(2021, 9, 21), true));
-        flights.add(new Flight(new Airline("Turkish Airlines", 350, 304),
-                "TK77", FlightType.COMM, "Istanbul","Miami",
+        flights.add(new Flight("Turkish Airlines","TK77", FlightType.COMM,
+                "Istanbul","Miami",
                 LocalDate.of(2021, 9, 22), false));
-        flights.add(new Flight(new Airline("Private Voyages", 11, 13),
-                "HI4506", FlightType.PRIV, "Honolulu","Sydney",
+        flights.add(new Flight("Private Voyages","HI4506", FlightType.PRIV,
+                "Honolulu","Sydney",
                 LocalDate.of(2021, 9, 21), true));
-        flights.add(new Flight(new Airline("Air New Zealand", 114, 83),
-                "NZ6141", FlightType.COMM, "Auckland","Sydney",
+        flights.add(new Flight("Air New Zealand", "NZ6141", FlightType.COMM,
+                "Auckland","Sydney",
                 LocalDate.of(2021, 9, 22), false));
-        flights.add(new Flight(new Airline("Bahamas Air", 10, 32),
-                "BHS224", FlightType.COMM, "Miami", "Nassau",
+        flights.add(new Flight("Bahamas Air", "BHS224", FlightType.COMM,
+                "Miami", "Nassau",
                 LocalDate.of(2021, 9, 23), false));
-        flights.add(new Flight(new Airline("Virgin Australia", 68, 40),
-                "VA526", FlightType.COMM, "Sydney", "Gold Coast",
+        flights.add(new Flight("Virgin Australia", "VA526", FlightType.COMM,
+                "Sydney", "Gold Coast",
                 LocalDate.of(2021, 9, 22), true));
-        flights.add(new Flight(new Airline("Virgin Australia", 68, 40),
-                "VA734", FlightType.COMM, "Gold Coast", "Melbourne",
+        flights.add(new Flight("Virgin Australia", "VA734", FlightType.COMM,
+                "Gold Coast", "Melbourne",
                 LocalDate.of(2021, 9, 23), false));
-        flights.add(new Flight(new Airline("Private Voyages", 11, 13),
-                "HI1204", FlightType.PRIV, "New York", "Miami",
+        flights.add(new Flight("Private Voyages", "HI1204", FlightType.PRIV,
+                "New York", "Miami",
                 LocalDate.of(2021, 9, 23), false));
     }
 
     @Override
     public Flight generateFlight(Flight flight) {
+        logger.info("creating new flight by adding to its airline");
+        Airline airline = new Airline(flight.getAirline(), 30, 30);
+        airline.addFlight(flight);
         flights.add(flight);
         return flight;
     }

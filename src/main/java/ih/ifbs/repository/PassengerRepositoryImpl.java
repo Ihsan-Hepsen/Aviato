@@ -23,8 +23,8 @@ public class PassengerRepositoryImpl implements PassengerRepository {
 
     private void fillPassengers() {
         passengers.add(new Passenger("Johnny Thunder", 21, Gender.M, true));
-        passengers.add(new Passenger("Jessica Cooper", 23, Gender.F, true));
-        passengers.add(new Passenger("Padme McKinney", 35, Gender.F, false));
+        passengers.add(new Passenger("Anna Cooper", 23, Gender.F, true));
+        passengers.add(new Passenger("Padme Amidala", 35, Gender.F, false));
         passengers.add(new Passenger("Kilroy Barron", 52, Gender.M, false));
         passengers.add(new Passenger("Senor Palomar", 32, Gender.M, false));
         passengers.add(new Passenger("Kül Tigin", 37, Gender.M, false));

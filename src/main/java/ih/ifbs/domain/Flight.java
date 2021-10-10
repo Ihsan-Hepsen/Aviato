@@ -1,22 +1,24 @@
 package ih.ifbs.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Flight {
 
-    private final Airline airline;
+    private final String airline;
     private final String flightNumber;
     private final FlightType flightType;
     private final String departure;
     private final String arrival;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private final LocalDate scheduledOn;
     private final boolean isOnTime;
     private final List<Passenger> passengerList;
 
 
-    public Flight(Airline airline, String flightNumber, FlightType flightType, String departure,
+    public Flight(String airline, String flightNumber, FlightType flightType, String departure,
                   String arrival, LocalDate scheduledOn, boolean isOnTime) {
         this.airline = airline;
         this.flightNumber = flightNumber;
@@ -32,7 +34,7 @@ public class Flight {
         passengerList.add(passenger);
     }
 
-    public Airline getAirline() {
+    public String getAirline() {
         return airline;
     }
 
@@ -67,7 +69,7 @@ public class Flight {
     @Override
     public String toString() {
         return String.format("-%-18s, Flight: %-6s - %s to %s - Time: %d-%s-%d (%s) ~ Passengers: %d (%s Flight)\n",
-                airline.getAirlineName(), flightNumber, departure.toUpperCase(), arrival.toUpperCase(),
+                airline, flightNumber, departure.toUpperCase(), arrival.toUpperCase(),
                 scheduledOn.getYear(), scheduledOn.getMonth().toString().subSequence(0, 3), scheduledOn.getDayOfMonth(),
                 isOnTime ? "OnTime" : "Delayed", passengerList.size(), flightType.getValue());
     }

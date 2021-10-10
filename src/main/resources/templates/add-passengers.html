@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Add Passenger</title>
+    <link rel="stylesheet" th:href="@{../static/style-all.css}">
 </head>
 <body>
 <header>
@@ -27,9 +28,10 @@
     </select>
     <label for="transit">Transit Passenger?</label>
     <select id="transit" name="isTransitPassenger">
-        <option>Yes</option>
         <option>No</option>
+        <option>Yes</option>
     </select>
+    <br>
     <input type="submit" value="Add Passenger">
 </form>
 </body>
