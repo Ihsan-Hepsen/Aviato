@@ -24,6 +24,7 @@
         <th>To</th>
         <th>Date</th>
         <th>On Time</th>
+        <th></th>
     </tr>
     <tr th:each="flight : ${flights}">
         <td th:text="${flight.getAirline()}"></td>
@@ -32,6 +33,7 @@
         <td th:text="${flight.getArrival()}"></td>
         <td th:text="${flight.getFlightSchedule()}"></td>
         <td th:text="${flight.isOnTime()}"></td>
+        <td><a th:href="@{./flights/details}">details</a></td>
     </tr>
 </table>
 </body>

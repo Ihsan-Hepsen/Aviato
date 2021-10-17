@@ -3,7 +3,6 @@ package ih.ifbs.repository;
 import ih.ifbs.domain.Entity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +10,6 @@ public abstract class ListRepository <T extends Entity> implements EntityReposit
 
     private static final Logger logger = LoggerFactory.getLogger(ListRepository.class);
     protected final List<T> entities = new ArrayList<>();
-    // TODO: Implement the methods!!
 
     @Override
     public List<T> read() {

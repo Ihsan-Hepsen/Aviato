@@ -68,15 +68,14 @@ public class DataSeeding implements CommandLineRunner {
                 "New York", "Miami",
                 LocalDate.of(2021, 10, 23), false));
 
-        passengers.read().get(0).addFlight(flights.read().get(0));
-        passengers.read().get(0).addFlight(flights.read().get(5));
-        passengers.read().get(0).addFlight(flights.read().get(6));
-        passengers.read().get(1).addFlight(flights.read().get(1));
-        passengers.read().get(1).addFlight(flights.read().get(4));
-        passengers.read().get(2).addFlight(flights.read().get(2));
-        passengers.read().get(3).addFlight(flights.read().get(3));
-        passengers.read().get(4).addFlight(flights.read().get(3));
-        passengers.read().get(5).addFlight(flights.read().get(7));
+        airlines.read().get(0).addFlight(flights.read().get(0));
+        airlines.read().get(1).addFlight(flights.read().get(1));
+        airlines.read().get(2).addFlight(flights.read().get(3));
+        airlines.read().get(3).addFlight(flights.read().get(5));
+        airlines.read().get(3).addFlight(flights.read().get(6));
+        airlines.read().get(4).addFlight(flights.read().get(4));
+        airlines.read().get(5).addFlight(flights.read().get(2));
+        airlines.read().get(5).addFlight(flights.read().get(7));
 
         flights.read().get(0).addPassenger(passengers.read().get(0));
         flights.read().get(5).addPassenger(passengers.read().get(0));
@@ -88,13 +87,14 @@ public class DataSeeding implements CommandLineRunner {
         flights.read().get(3).addPassenger(passengers.read().get(4));
         flights.read().get(7).addPassenger(passengers.read().get(5));
 
-        airlines.read().get(0).addFlight(flights.read().get(0));
-        airlines.read().get(1).addFlight(flights.read().get(1));
-        airlines.read().get(2).addFlight(flights.read().get(3));
-        airlines.read().get(3).addFlight(flights.read().get(5));
-        airlines.read().get(3).addFlight(flights.read().get(6));
-        airlines.read().get(4).addFlight(flights.read().get(4));
-        airlines.read().get(5).addFlight(flights.read().get(2));
-        airlines.read().get(5).addFlight(flights.read().get(7));
+        passengers.read().get(0).addFlight(flights.read().get(0));
+        passengers.read().get(0).addFlight(flights.read().get(5));
+        passengers.read().get(0).addFlight(flights.read().get(6));
+        passengers.read().get(1).addFlight(flights.read().get(1));
+        passengers.read().get(1).addFlight(flights.read().get(4));
+        passengers.read().get(2).addFlight(flights.read().get(2));
+        passengers.read().get(3).addFlight(flights.read().get(3));
+        passengers.read().get(4).addFlight(flights.read().get(3));
+        passengers.read().get(5).addFlight(flights.read().get(7));
     }
 }
