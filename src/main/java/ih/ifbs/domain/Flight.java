@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Flight {
+public class Flight extends Entity {
 
     private final String airline;
     private final String flightNumber;

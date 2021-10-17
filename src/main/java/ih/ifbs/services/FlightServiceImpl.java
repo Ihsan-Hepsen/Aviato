@@ -1,10 +1,9 @@
 package ih.ifbs.services;
 
 import ih.ifbs.domain.Flight;
-import ih.ifbs.repository.FlightRepository;
+import ih.ifbs.repository.ListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import java.util.Collection;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -14,23 +13,22 @@ import java.util.stream.Stream;
 
 @Component
 public class FlightServiceImpl implements FlightService {
-    // TODO: services & methods that the presentation layer needs
 
-    private final FlightRepository flightRepository;
+    private final ListRepository<Flight> flightRepository;
 
     @Autowired
-    public FlightServiceImpl(FlightRepository flightRepository) {
+    public FlightServiceImpl(ListRepository<Flight> flightRepository) {
         this.flightRepository = flightRepository;
     }
 
     @Override
     public Flight addFlight(Flight flight) {
-        return flightRepository.generateFlight(flight);
+        return flightRepository.create(flight);
     }
 
     @Override
     public List<Flight> getAllFlights() {
-        return flightRepository.getFlights();
+        return flightRepository.read();
     }
 
     @Override
@@ -48,13 +46,13 @@ public class FlightServiceImpl implements FlightService {
 
     private List<Flight> filterFlightsByCity(String city) {
         Pattern cityPattern = Pattern.compile(city);
-        List<Flight> filtered1 = flightRepository.getFlights().stream()
+        List<Flight> filtered1 = flightRepository.read().stream()
                 .filter(f -> {
                     Matcher match = cityPattern.matcher(f.getArrival());
                     return match.find();
                 })
                 .collect(Collectors.toList());
-        List<Flight> filtered2 = flightRepository.getFlights().stream()
+        List<Flight> filtered2 = flightRepository.read().stream()
                 .filter(f -> {
                     Matcher match = cityPattern.matcher(f.getDeparture());
                     return match.find();
@@ -65,7 +63,7 @@ public class FlightServiceImpl implements FlightService {
 
     private List<Flight> filterFlightsByDate(String date) {
         Pattern datePattern = Pattern.compile(date);
-        return flightRepository.getFlights().stream()
+        return flightRepository.read().stream()
                 .filter(f -> {
                     Matcher match = datePattern.matcher(f.getFlightSchedule().toString());
                     return match.find();

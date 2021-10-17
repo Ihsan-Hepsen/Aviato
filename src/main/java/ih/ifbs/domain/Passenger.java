@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
-public class Passenger {
+public class Passenger extends Entity {
 
     private final String name;
     private final int age;

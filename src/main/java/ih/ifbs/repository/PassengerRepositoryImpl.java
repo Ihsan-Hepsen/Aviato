@@ -3,69 +3,72 @@ package ih.ifbs.repository;
 import ih.ifbs.domain.Flight;
 import ih.ifbs.domain.Gender;
 import ih.ifbs.domain.Passenger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class PassengerRepositoryImpl implements PassengerRepository {
+public class PassengerRepositoryImpl extends ListRepository<Passenger> {
 
+    private static final Logger logger = LoggerFactory.getLogger(PassengerRepositoryImpl.class);
     private static final List<Passenger> passengers = new ArrayList<>();
-    private final FlightRepository flights;
+//    private final FlightRepository flights = new FlightRepositoryImpl();
 
     @Autowired
-    public PassengerRepositoryImpl(FlightRepository flights) {
-        this.flights = flights;
-        fillPassengers();
+    public PassengerRepositoryImpl() {
+//        this.flights = flights;
+//        fillPassengers();
+        logger.debug("Creating passengers repository");
     }
-
-    private void fillPassengers() {
-        passengers.add(new Passenger("Johnny Thunder", 21, Gender.M, true));
-        passengers.add(new Passenger("Anna Cooper", 23, Gender.F, true));
-        passengers.add(new Passenger("Padme Amidala", 35, Gender.F, false));
-        passengers.add(new Passenger("Kilroy Barron", 52, Gender.M, false));
-        passengers.add(new Passenger("Senor Palomar", 32, Gender.M, false));
-        passengers.add(new Passenger("Kül Tigin", 37, Gender.M, false));
-
-        passengers.get(0).addFlight(flights.getFlights().get(0));
-        passengers.get(0).addFlight(flights.getFlights().get(5));
-        passengers.get(0).addFlight(flights.getFlights().get(6));
-        passengers.get(1).addFlight(flights.getFlights().get(1));
-        passengers.get(1).addFlight(flights.getFlights().get(4));
-        passengers.get(2).addFlight(flights.getFlights().get(2));
-        passengers.get(3).addFlight(flights.getFlights().get(3));
-        passengers.get(4).addFlight(flights.getFlights().get(3));
-        passengers.get(5).addFlight(flights.getFlights().get(7));
-
-        flights.getFlights().get(0).addPassenger(passengers.get(0));
-        flights.getFlights().get(5).addPassenger(passengers.get(0));
-        flights.getFlights().get(6).addPassenger(passengers.get(0));
-        flights.getFlights().get(1).addPassenger(passengers.get(1));
-        flights.getFlights().get(4).addPassenger(passengers.get(1));
-        flights.getFlights().get(2).addPassenger(passengers.get(2));
-        flights.getFlights().get(3).addPassenger(passengers.get(3));
-        flights.getFlights().get(3).addPassenger(passengers.get(4));
-        flights.getFlights().get(7).addPassenger(passengers.get(5));
-    }
-
-    @Override
-    public Passenger createPassenger(Passenger passenger) {
-        passengers.add(passenger);
-        return passenger;
-    }
-
-    @Override
-    public Passenger createPassenger(Passenger passenger, Flight flight) {
-        passenger.addFlight(flight);
-        flight.addPassenger(passenger);
-        passengers.add(passenger);
-        return passenger;
-    }
-
-    @Override
-    public List<Passenger> getPassengers() {
-        return passengers;
-    }
+//
+//    private void fillPassengers() {
+//        passengers.add(new Passenger("Johnny Thunder", 21, Gender.M, true));
+//        passengers.add(new Passenger("Anna Cooper", 23, Gender.F, true));
+//        passengers.add(new Passenger("Padme Amidala", 35, Gender.F, false));
+//        passengers.add(new Passenger("Kilroy Barron", 52, Gender.M, false));
+//        passengers.add(new Passenger("Senor Palomar", 32, Gender.M, false));
+//        passengers.add(new Passenger("Kül Tigin", 37, Gender.M, false));
+//
+//        passengers.get(0).addFlight(flights.getFlights().get(0));
+//        passengers.get(0).addFlight(flights.getFlights().get(5));
+//        passengers.get(0).addFlight(flights.getFlights().get(6));
+//        passengers.get(1).addFlight(flights.getFlights().get(1));
+//        passengers.get(1).addFlight(flights.getFlights().get(4));
+//        passengers.get(2).addFlight(flights.getFlights().get(2));
+//        passengers.get(3).addFlight(flights.getFlights().get(3));
+//        passengers.get(4).addFlight(flights.getFlights().get(3));
+//        passengers.get(5).addFlight(flights.getFlights().get(7));
+//
+//        flights.getFlights().get(0).addPassenger(passengers.get(0));
+//        flights.getFlights().get(5).addPassenger(passengers.get(0));
+//        flights.getFlights().get(6).addPassenger(passengers.get(0));
+//        flights.getFlights().get(1).addPassenger(passengers.get(1));
+//        flights.getFlights().get(4).addPassenger(passengers.get(1));
+//        flights.getFlights().get(2).addPassenger(passengers.get(2));
+//        flights.getFlights().get(3).addPassenger(passengers.get(3));
+//        flights.getFlights().get(3).addPassenger(passengers.get(4));
+//        flights.getFlights().get(7).addPassenger(passengers.get(5));
+//    }
+//
+//    @Override
+//    public Passenger createPassenger(Passenger passenger) {
+//        passengers.add(passenger);
+//        return passenger;
+//    }
+//
+//    @Override
+//    public Passenger createPassenger(Passenger passenger, Flight flight) {
+//        passenger.addFlight(flight);
+//        flight.addPassenger(passenger);
+//        passengers.add(passenger);
+//        return passenger;
+//    }
+//
+//    @Override
+//    public List<Passenger> getPassengers() {
+//        return passengers;
+//    }
 }

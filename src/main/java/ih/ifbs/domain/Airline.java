@@ -3,7 +3,7 @@ package ih.ifbs.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Airline {
+public class Airline extends Entity {
 
     private final String airlineName;
     private final int fleetSize;
