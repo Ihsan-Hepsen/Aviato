@@ -18,6 +18,11 @@ public class PassengerServiceImpl implements PassengerService {
     }
 
     @Override
+    public Passenger findById(int id) {
+        return repository.findById(id);
+    }
+
+    @Override
     public Passenger createPassenger(Passenger passenger) {
         return repository.create(passenger);
     }

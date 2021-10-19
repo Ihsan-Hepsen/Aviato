@@ -18,7 +18,7 @@
 </header>
 <h1>Flight Details</h1>
 <div class="details">
-    <h2 th:text="Flight- + ${flight.getFlightNumber()} + Details"></h2>
+    <h2 th:text="Flight + ${flight.getFlightNumber()} + Details"></h2>
     <ul>
         <li th:text="Airline + ${flight.getAirline()}"></li>
         <li th:text="Departure + ${flight.getDeparture()}"></li>

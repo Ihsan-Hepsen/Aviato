@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/passengers")
@@ -36,6 +37,14 @@ public class PassengerController {
         logger.info("Showing add passenger form");
         model.addAttribute("genders", Gender.values());
         return "add-passengers";
+    }
+
+    @GetMapping("/details")
+    public String showPassengerDetails(@RequestParam(value = "pId") int id, Model model) {
+        Passenger passenger = passengerService.findById(id);
+        logger.debug("Showing details of " + passenger);
+        model.addAttribute("passenger", passenger);
+        return "passenger-details";
     }
 
     @PostMapping("/add")

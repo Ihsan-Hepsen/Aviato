@@ -1,11 +1,9 @@
 package ih.ifbs.presentation;
 
-import ih.ifbs.domain.Airline;
 import ih.ifbs.domain.Flight;
 import ih.ifbs.domain.FlightType;
 import ih.ifbs.presentation.dto.FlightDTO;
 import ih.ifbs.services.FlightService;
-import ih.ifbs.services.FlightServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.time.LocalDate;
 
 @Controller
 @RequestMapping("/flights")
@@ -56,8 +52,8 @@ public class FlightController {
 
     @GetMapping("/details")
     public String flightDetail(@RequestParam(value = "flightId") int id, Model model) {
-        logger.debug("Details of the flight-" + id);
-        Flight f = flightService.findFLightById(id);
+        logger.debug("Showing details of the flight " + id);
+        Flight f = flightService.findById(id);
         model.addAttribute("flight", f);
         return "flight-details";
     }

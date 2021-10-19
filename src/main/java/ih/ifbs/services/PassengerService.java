@@ -4,6 +4,8 @@ import ih.ifbs.domain.Passenger;
 import java.util.List;
 
 public interface PassengerService {
+    Passenger findById(int id);
+
     Passenger createPassenger(Passenger passenger);
 
     List<Passenger> getAllPassengers();

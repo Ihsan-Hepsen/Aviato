@@ -31,6 +31,7 @@
         <td th:text="${passenger.getGender()}"></td>
         <td th:text="${passenger.isTransitPassenger()}"></td>
         <td th:text="${passenger.getNumberOfFlights()}"></td>
+        <td><a th:href="@{./passengers/details(pId=${passenger.getId()})}">details</a></td>
     </tr>
 </table>
 </body>

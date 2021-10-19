@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.List;
 
 public interface FlightService {
-    Flight findFLightById(int id);
+    Flight findById(int id);
 
     Flight addFlight(Flight flight);
 

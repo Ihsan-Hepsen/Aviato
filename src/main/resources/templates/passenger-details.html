@@ -17,5 +17,13 @@
     </nav>
 </header>
 <h1>Passenger Details</h1>
+<div class="details">
+    <h2 th:text="${passenger.getName()}"></h2>
+    <ul>
+        <li th:text="Age + ${passenger.getAge()}"></li>
+        <li th:text="Gender + ${passenger.getGender()}"></li>
+        <li th:text="Flights + ${passenger.getNumberOfFlights()}"></li>
+    </ul>
+</div>
 </body>
 </html>

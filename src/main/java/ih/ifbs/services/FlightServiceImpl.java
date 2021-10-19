@@ -71,7 +71,7 @@ public class FlightServiceImpl implements FlightService {
                 .collect(Collectors.toList());
     }
 
-    public Flight findFLightById(int id) {
+    public Flight findById(int id) {
         return flightRepository.findById(id);
     }
 }
