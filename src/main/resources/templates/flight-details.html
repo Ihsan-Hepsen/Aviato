@@ -18,11 +18,11 @@
 </header>
 <h1>Flight Details</h1>
 <div class="details">
-    <h2 th:text="Flight + ${flight.getFlightNumber()} + Details"></h2>
+    <h2>FLight: <span th:text="${flight.getFlightNumber()}"></span></h2>
     <ul>
-        <li th:text="Airline + ${flight.getAirline()}"></li>
-        <li th:text="Departure + ${flight.getDeparture()}"></li>
-        <li th:text="Arrival + ${flight.getArrival()}"></li>
+        <li>Airline: <span th:text="${flight.getAirline()}"></span></li>
+        <li>Departure: <span th:text="${flight.getDeparture()}"></span></li>
+        <li>Arrival: <span th:text="${flight.getArrival()}"></span></li>
     </ul>
 </div>
 </body>

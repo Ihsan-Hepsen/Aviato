@@ -1,3 +1,52 @@
+html {
+    text-align: center;
+}
+
+body {
+    background-image: url("../static/media/ucak-kanat.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#navbar {
+    border: 1px solid #000;
+    align-items: center;
+}
+
+#navbar > a {
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+}
+
+ a, span > a {
+    text-decoration: none;
+    color: #000;
+}
+
+#navbar > a:hover, a:hover {
+    color: lime;
+}
+
+#logo {
+    width: auto;
+    height: 3vw;
+}
+
+.current {
+    text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+/* ===================================================== */
+/*            T H E     O L D     C S S                  */
+/* ===================================================== */
 body {
     text-align: center;
 }
@@ -15,4 +64,17 @@ form {
     margin-left: auto;
     margin-right: auto;
     padding: 1rem;
+}
+
+td {
+    padding: 0 .45rem;
+    text-align: left;
+}
+
+li {
+    font-weight: 900;
+}
+
+li > span {
+    font-weight: 300;
 }

@@ -4,16 +4,22 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{../static/general.css}">
     <link rel="icon" type="image/png" th:href="@{../static/media/fav_icon.png}"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <script defer th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
     <title>Aviato</title>
 </head>
-<body>
+<body class="container-fluid">
 <header>
-    <nav id="navbar">
-        <a class="current" th:href="@{../home}">Home</a>
-        <a th:href="@{../passengers}">Passengers</a>
-        <a th:href="@{../flights}">Flights</a>
-        <a th:href="@{../passengers/add}">Add Passenger</a>
-        <a th:href="@{../flights/add}">Add Flight</a>
+    <nav id="navbar" class="navbar row">
+        <a class="navbar-brand col-xl-5 col-xs-12 col-sm-12" th:href="@{../home}">
+            <img id="logo" src="../static/media/fav_icon.png" alt="logo">
+        </a>
+        <a class="current col-xl-1 col-xs-8" th:href="@{../home}">Home</a>
+        <a class="col-xl-1 col-xs-8" th:href="@{../passengers}">Passengers</a>
+        <a class="col-xl-1 col-xs-8" th:href="@{../flights}">Flights</a>
+        <a class="col-xl-1 col-xs-8" th:href="@{../passengers/add}">Add Passenger</a>
+        <a class="col-xl-1 col-xs-8" th:href="@{../flights/add}">Add Flight</a>
+        <span class="col-xl-1 col-xs-8"><a href="">En</a>/<a href="">Tr</a></span>
     </nav>
 </header>
 <h1>Aviato</h1>
