@@ -3,6 +3,7 @@ package ih.ifbs.presentation;
 import ih.ifbs.domain.Airline;
 import ih.ifbs.domain.Flight;
 import ih.ifbs.domain.FlightType;
+import ih.ifbs.presentation.dto.FlightDTO;
 import ih.ifbs.services.FlightService;
 import ih.ifbs.services.FlightServiceImpl;
 import org.slf4j.Logger;
@@ -44,22 +45,20 @@ public class FlightController {
     }
 
     @PostMapping("/add")
-    public String collectFields(Flight f) {
+    public String collectFields(FlightDTO flightDTO) {
         logger.info("collecting flight fields...");
-        Airline airline = new Airline(f.getAirline(), 30, 60);
-        Flight flight = new Flight(f.getAirline(), f.getFlightNumber(), f.getFlightType(), f.getDeparture(), f.getArrival(),
-                f.getFlightSchedule(), true);
+        Flight flight = new Flight(flightDTO.getAirline(), flightDTO.getFlightNumber(), flightDTO.getFlightType(),
+                flightDTO.getDeparture(), flightDTO.getArrival(), flightDTO.getScheduledOn(), flightDTO.isOnTime());
         flightService.addFlight(flight);
         logger.info("new flight '" + flight.getFlightNumber() + "' added to flight list");
         return "redirect:/flights";
     }
 
     @GetMapping("/details")
-    public String flightDetail(Model model) {
-        Flight flight = new Flight("Air New Zealand", "NZ6141", FlightType.COMM,
-                "Auckland","Sydney",
-                LocalDate.of(2021, 10, 22), false);
-        model.addAttribute("flight", flight);
+    public String flightDetail(@RequestParam(value = "flightId") int id, Model model) {
+        logger.debug("Details of the flight-" + id);
+        Flight f = flightService.findFLightById(id);
+        model.addAttribute("flight", f);
         return "flight-details";
     }
 }

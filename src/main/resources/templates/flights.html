@@ -34,7 +34,7 @@
         <td th:text="${flight.getArrival()}"></td>
         <td th:text="${flight.getFlightSchedule()}"></td>
         <td th:text="${flight.isOnTime()}"></td>
-        <td><a th:href="@{./flights/details}">details</a></td>
+        <td><a th:href="@{./flights/details(flightId=${flight.getId()})}">details</a></td>
     </tr>
 </table>
 </body>
