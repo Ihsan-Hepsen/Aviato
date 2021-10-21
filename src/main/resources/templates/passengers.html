@@ -4,35 +4,47 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{../static/general.css}">
     <link rel="icon" type="image/png" th:href="@{../static/media/fav_icon.png}"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <script defer th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
     <title>Passengers</title>
 </head>
-<body>
+<body class="container-fluid index">
 <header>
-    <nav id="navbar">
-        <a th:href="@{../home}">Home</a>
-        <a class="current" th:href="@{../passengers}">Passengers</a>
-        <a th:href="@{../flights}">Flights</a>
-        <a th:href="@{../passengers/add}">Add Passenger</a>
-        <a th:href="@{../flights/add}">Add Flight</a>
+    <nav id="navbar" class="navbar row">
+        <a class="navbar-brand col-xl-5 col-xs-2 col-md-1" th:href="@{../home}">
+            <img id="logo" src="../static/media/fav_icon.png" alt="logo">
+        </a>
+        <a class="current col-xl-1 col-xs-8 col-md-2" th:href="@{../home}">Home</a>
+        <a class="col-xl-1 col-xs-8 col-md-2" th:href="@{../passengers}">Passengers</a>
+        <a class="col-xl-1 col-xs-8 col-md-2" th:href="@{../flights}">Flights</a>
+        <a class="col-xl-2 col-xs-8 col-md-2" th:href="@{../passengers/add}">Add Passenger</a>
+        <a class="col-xl-1 col-xs-8 col-md-2" th:href="@{../flights/add}">Add Flight</a>
+        <!--        <span class="col-xl-1 col-xs-8 col-md-2"><a href="">En</a>/<a href="">Tr</a></span>-->
     </nav>
 </header>
 <h1>All Passengers</h1>
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Age</th>
-        <th>Gender</th>
-        <th>Transit</th>
-        <th>Flights</th>
-    </tr>
-    <tr th:each="passenger : ${passengers}">
-        <td th:text="${passenger.getName()}"></td>
-        <td th:text="${passenger.getAge()}"></td>
-        <td th:text="${passenger.getGender()}"></td>
-        <td th:text="${passenger.isTransitPassenger()} ? 'Yes' : 'No'"></td>
-        <td th:text="${passenger.getNumberOfFlights()}"></td>
-        <td><a th:href="@{./passengers/details(pId=${passenger.getId()})}">details</a></td>
-    </tr>
-</table>
+<main class="table-responsive table-section">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Transit</th>
+            <th>Flights</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tr th:each="passenger : ${passengers}">
+            <td th:text="${passenger.getName()}"></td>
+            <td th:text="${passenger.getAge()}"></td>
+            <td th:text="${passenger.getGender()}"></td>
+            <td th:text="${passenger.isTransitPassenger()} ? 'Yes' : 'No'"></td>
+            <td th:text="${passenger.getNumberOfFlights()}"></td>
+            <td><a th:href="@{./passengers/details(pId=${passenger.getId()})}">details</a></td>
+        </tr>
+    </table>
+</main>
+<footer th:insert="~{footer::copy}">Aviato &#169; 2021</footer>
 </body>
 </html>

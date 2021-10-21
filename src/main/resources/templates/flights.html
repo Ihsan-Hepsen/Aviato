@@ -4,38 +4,50 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{../static/general.css}">
     <link rel="icon" type="image/png" th:href="@{../static/media/fav_icon.png}"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <script defer th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
     <title>Flights</title>
 </head>
-<body>
+<body class="container-fluid index">
 <header>
-    <nav id="navbar">
-        <a th:href="@{../home}">Home</a>
-        <a th:href="@{../passengers}">Passengers</a>
-        <a class="current" th:href="@{../flights}">Flights</a>
-        <a th:href="@{../passengers/add}">Add Passenger</a>
-        <a th:href="@{../flights/add}">Add Flight</a>
+    <nav id="navbar" class="navbar row">
+        <a class="navbar-brand col-xl-5 col-xs-2 col-md-1" th:href="@{../home}">
+            <img id="logo" src="../static/media/fav_icon.png" alt="logo">
+        </a>
+        <a class="current col-xl-1 col-xs-8 col-md-2" th:href="@{../home}">Home</a>
+        <a class="col-xl-1 col-xs-8 col-md-2" th:href="@{../passengers}">Passengers</a>
+        <a class="col-xl-1 col-xs-8 col-md-2" th:href="@{../flights}">Flights</a>
+        <a class="col-xl-2 col-xs-8 col-md-2" th:href="@{../passengers/add}">Add Passenger</a>
+        <a class="col-xl-1 col-xs-8 col-md-2" th:href="@{../flights/add}">Add Flight</a>
+        <!--        <span class="col-xl-1 col-xs-8 col-md-2"><a href="">En</a>/<a href="">Tr</a></span>-->
     </nav>
 </header>
 <h1>Flights</h1>
-<table>
-    <tr>
-        <th>Airline</th>
-        <th>Flight</th>
-        <th>From</th>
-        <th>To</th>
-        <th>Date</th>
-        <th>Status</th>
-        <th></th>
-    </tr>
-    <tr th:each="flight : ${flights}">
-        <td th:text="${flight.getAirline()}"></td>
-        <td th:text="${flight.getFlightNumber()}"></td>
-        <td th:text="${flight.getDeparture()}"></td>
-        <td th:text="${flight.getArrival()}"></td>
-        <td th:text="${flight.getFlightSchedule()}"></td>
-        <td th:text="${flight.isOnTime()} ? 'On Time' : 'Delayed'"></td>
-        <td><a th:href="@{./flights/details(flightId=${flight.getId()})}">details</a></td>
-    </tr>
-</table>
+<main class="table-responsive table-section">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Airline</th>
+            <th>Flight</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tr th:each="flight : ${flights}">
+            <td th:text="${flight.getAirline()}"></td>
+            <td th:text="${flight.getFlightNumber()}"></td>
+            <td th:text="${flight.getDeparture()}"></td>
+            <td th:text="${flight.getArrival()}"></td>
+            <td th:text="${flight.getFlightSchedule()}"></td>
+            <td th:text="${flight.isOnTime()} ? 'On Time' : 'Delayed'"></td>
+            <td><a th:href="@{./flights/details(flightId=${flight.getId()})}">details</a></td>
+        </tr>
+    </table>
+</main>
+
+<footer th:insert="~{footer::copy}">Aviato &#169; 2021</footer>
 </body>
 </html>

@@ -1,15 +1,47 @@
 html {
     text-align: center;
+    font-size: 1.2em;
 }
 
 body {
-    background-image: url("../static/media/ucak-kanat.jpg");
+    font-family: "Corbel Light", Verdana, sans-serif;
+}
+
+.index {
+    background-image: url("../static/media/ucak.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
 
+.flights {
+    background: #4a9cd0;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+main > h1 {
+    font-size: 8.3em;
+    color: #fdfdff;
+    padding: .4rem;
+    margin: 1rem 1rem 1.5rem 1rem;
+    /*border: lime 2px solid;*/
+}
+
+main > h2, h2 {
+    font-size: 3.25rem;
+}
+
+p {
+    font-size: 160%;
+    font-weight: 300;
+    color: #fdfdff;
+    margin: 0 1.3rem;
+}
+
 #navbar {
-    border: 1px solid #000;
+    /*border: 1px solid #000;*/
     align-items: center;
 }
 
@@ -19,12 +51,11 @@ body {
     text-decoration: none;
 }
 
- a, span > a {
-    text-decoration: none;
-    color: #000;
+#navbar > a:hover {
+    color: #d9d9da;
 }
 
-#navbar > a:hover, a:hover {
+a:hover {
     color: lime;
 }
 
@@ -37,38 +68,74 @@ body {
     text-decoration: underline;
 }
 
+.home-buttons-container {
+    /*background: rgba(255,255,255,0.27);*/
+    /*border-radius: 10px;*/
+    /*min-height: 300px;*/
+}
 
+.home-buttons-container > a {
+    text-decoration: none;
+    padding: .65rem;
+    margin: 0 1rem;
+    color: #fff;
+    border: none;
+    background: #000;
+    border-radius: 7px;
+}
 
-
-
-
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 99%;
+    color: #fdfdff;
+}
 
 
 /* ===================================================== */
 /*            T H E     O L D     C S S                  */
 /* ===================================================== */
-body {
-    text-align: center;
-}
+/*.table-section {*/
+/*    padding: 1rem 10rem;*/
+/*}*/
 
-table {
-    padding: 1rem;
-    margin-left: auto;
-    margin-right: auto;
-}
+/*table {*/
+/*    background: rgba(10, 0, 0, 0.83);*/
+/*    border-radius: 7px;*/
+/*    color: #fff;*/
+/*    padding: 1rem;*/
+/*    width: 40%;*/
+/*}*/
 
 form {
+    background: rgba(10, 0, 0, 0.83);
+    border-radius: 7px;
+    color: #fdfdff;
     display: flex;
     flex-direction: column;
-    max-width: 20%;
+    max-width: 30%;
     margin-left: auto;
     margin-right: auto;
     padding: 1rem;
+}
+
+thead {
+    background: #000;
+    color: #fdfdff;
 }
 
 td {
-    padding: 0 .45rem;
+    /*padding: .3rem 1rem;*/
     text-align: left;
+}
+
+tr {
+    color: #fdfdff;
+}
+
+tr:nth-child(2n) {
+    background: rgba(253, 253, 255, 0.82);
+    color: #000;
 }
 
 li {
