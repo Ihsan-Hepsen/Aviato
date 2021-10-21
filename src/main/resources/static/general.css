@@ -3,14 +3,15 @@ html {
     font-size: 1.2em;
 }
 
-body {
-    font-family: "Corbel Light", Verdana, sans-serif;
+header {
+    margin-bottom: 1rem;
 }
 
 .index {
     background-image: url("../static/media/ucak.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    font-family: "Corbel Light", Verdana, sans-serif;
 }
 
 .flights {
@@ -19,6 +20,7 @@ body {
 
 h1 {
     font-size: 4rem;
+    font-weight: 700;
 }
 
 main > h1 {
@@ -26,7 +28,6 @@ main > h1 {
     color: #fdfdff;
     padding: .4rem;
     margin: 1rem 1rem 1.5rem 1rem;
-    /*border: lime 2px solid;*/
 }
 
 main > h2, h2 {
@@ -55,16 +56,12 @@ p {
     color: #d9d9da;
 }
 
-a:hover {
-    color: lime;
-}
-
 #logo {
     width: auto;
     height: 3vw;
 }
 
-.current {
+#navbar > a.current {
     text-decoration: underline;
 }
 
@@ -91,42 +88,22 @@ footer {
     color: #fdfdff;
 }
 
+/* TABLES */
+.table-section {
+    width: 60%;
+    margin: 1em auto;
+}
 
-/* ===================================================== */
-/*            T H E     O L D     C S S                  */
-/* ===================================================== */
-/*.table-section {*/
-/*    padding: 1rem 10rem;*/
-/*}*/
-
-/*table {*/
-/*    background: rgba(10, 0, 0, 0.83);*/
-/*    border-radius: 7px;*/
-/*    color: #fff;*/
-/*    padding: 1rem;*/
-/*    width: 40%;*/
-/*}*/
-
-form {
+table {
     background: rgba(10, 0, 0, 0.83);
-    border-radius: 7px;
-    color: #fdfdff;
-    display: flex;
-    flex-direction: column;
-    max-width: 30%;
-    margin-left: auto;
-    margin-right: auto;
+    color: #fff;
     padding: 1rem;
+    text-align: center;
 }
 
 thead {
     background: #000;
     color: #fdfdff;
-}
-
-td {
-    /*padding: .3rem 1rem;*/
-    text-align: left;
 }
 
 tr {
@@ -138,10 +115,76 @@ tr:nth-child(2n) {
     color: #000;
 }
 
-li {
+td > a {
+    background: #000;
+    color: #fdfdff;
+    text-decoration: none;
+    border: none;
+    border-radius: 3px;
+    padding: .3rem;
+}
+
+td > a:hover {
+    background: #fdfdff;
+    color: #000;
+}
+/* TABLES - END */
+
+/* FORMS */
+form {
+    background: rgba(10, 0, 0, 0.83);
+    border-radius: 7px;
+    color: #fdfdff;
+    display: flex;
+    flex-direction: column;
+    max-width: 32%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2rem;
+}
+
+.radio-section {
+    align-self: center;
+    display: block;
+    text-align: left;
+}
+
+input {
+    font-size: 90%;
+    border-radius: 5px;
+    border: none;
+}
+/* FORMS - END */
+
+/* DETAIL BOXES */
+.detail-box  {
+    background: #fefefeee;
+    border-radius: 10px;
+    width: 50%;
+    margin: .5rem auto 1rem auto;
+    padding: 1rem 0;
+}
+
+.details {
+    text-align: left;
+    font-size: 1rem;
+    margin-right: auto;
+    margin-left: auto;
+    width: 40%;
+    border: 1px solid red;
+}
+
+.details > p {
+    color: #000;
+    font-size: 1rem;
+    margin: 1rem 2rem;
     font-weight: 900;
 }
 
-li > span {
-    font-weight: 300;
+.details > p > span {
+    font-weight: 200;
 }
+
+
+
+/* DETAIL BOXES - END */

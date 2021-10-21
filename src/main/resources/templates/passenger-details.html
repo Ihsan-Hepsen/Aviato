@@ -2,29 +2,44 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Passenger Details</title>
     <link rel="stylesheet" th:href="@{../static/general.css}">
     <link rel="icon" type="image/png" th:href="@{../static/media/fav_icon.png}"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <script defer th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <title>Passenger Details</title>
 </head>
-<body>
+<body class="container-fluid index">
 <header>
-    <nav id="navbar">
-        <a th:href="@{../home}">Home</a>
-        <a class="current" th:href="@{../passengers}">Passengers</a>
-        <a th:href="@{../flights}">Flights</a>
-        <a th:href="@{../passengers/add}">Add Passenger</a>
-        <a th:href="@{../flights/add}">Add Flight</a>
+    <nav id="navbar" class="navbar row">
+        <a class="navbar-brand col-xl-5 col-xs-2 col-md-1" th:href="@{../home}">
+            <img id="logo" src="../static/media/fav_icon.png" alt="logo">
+        </a>
+        <a class="col-xl-1 col-xs-8 col-md-2" th:href="@{../home}">Home</a>
+        <a class="col-xl-1 col-xs-8 col-md-2" th:href="@{../passengers}">Passengers</a>
+        <a class="col-xl-1 col-xs-8 col-md-2" th:href="@{../flights}">Flights</a>
+        <a class="col-xl-2 col-xs-8 col-md-2" th:href="@{../passengers/add}">Add Passenger</a>
+        <a class="col-xl-1 col-xs-8 col-md-2" th:href="@{../flights/add}">Add Flight</a>
+        <!--        <span class="col-xl-1 col-xs-8 col-md-2"><a href="">En</a>/<a href="">Tr</a></span>-->
     </nav>
 </header>
 <h1>Passenger Details</h1>
-<div class="details">
-    <h2 th:text="${passenger.getName()}"></h2>
-    <ul>
-        <li>Age: <span th:text="${passenger.getAge()}"></span></li>
-        <li>Gender: <span th:text="${passenger.getGender().getGender()}"></span></li>
-        <li>Flights: <span th:text="${passenger.getNumberOfFlights()}"></span></li>
-    </ul>
-</div>
+<main class="row">
+    <section class="detail-box col-xl-6">
+        <h2 th:text="${passenger.getName()}"></h2>
+        <hr>
+        <div class="details">
+            <p>Age: <span th:text="${passenger.getAge()}"></span></p>
+            <p>Gender: <span th:text="${passenger.getGender().getGender()}"></span></p>
+            <p>Transit: <span th:text="${passenger.isTransitPassenger() ? 'Yes' : 'No'}"></span></p>
+            <p>Flights: <span th:text="${passenger.getNumberOfFlights()}"></span></p>
+            <div>
+                <p>Flight Details: <span th:each="flights : ${passenger.getFlights()}"></span></p>
+<!--                <p th:text="${}"></p>-->
+
+            </div>
+        </div>
+    </section>
+</main>
 </body>
 <footer th:insert="~{footer::copy}">Aviato &#169; 2021</footer>
 </html>

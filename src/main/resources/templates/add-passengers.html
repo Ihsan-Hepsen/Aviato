@@ -2,39 +2,48 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add Passenger</title>
     <link rel="stylesheet" th:href="@{../static/general.css}">
     <link rel="icon" type="image/png" th:href="@{../static/media/fav_icon.png}"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <script defer th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <title>Add Passenger</title>
 </head>
-<body>
+<body class="container-fluid index">
 <header>
-    <nav id="navbar">
-        <a th:href="@{../home}">Home</a>
-        <a th:href="@{../passengers}">Passengers</a>
-        <a th:href="@{../flights}">Flights</a>
-        <a class="current" th:href="@{../passengers/add}">Add Passenger</a>
-        <a th:href="@{../flights/add}">Add Flight</a>
+    <nav id="navbar" class="navbar row">
+        <a class="navbar-brand col-xl-5 col-xs-2 col-md-1" th:href="@{../home}">
+            <img id="logo" src="../static/media/fav_icon.png" alt="logo">
+        </a>
+        <a class="col-xl-1 col-xs-8 col-md-2" th:href="@{../home}">Home</a>
+        <a class="col-xl-1 col-xs-8 col-md-2" th:href="@{../passengers}">Passengers</a>
+        <a class="col-xl-1 col-xs-8 col-md-2" th:href="@{../flights}">Flights</a>
+        <a class="current col-xl-2 col-xs-8 col-md-2" th:href="@{../passengers/add}">Add Passenger</a>
+        <a class="col-xl-1 col-xs-8 col-md-2" th:href="@{../flights/add}">Add Flight</a>
+<!--                <span class="col-xl-1 col-xs-8 col-md-2"><a href="">En</a>/<a href="">Tr</a></span>-->
     </nav>
 </header>
 <h1>Add Passenger</h1>
-<form method="post">
-    <label for="name">Full Name</label>
-    <input id="name" type="text" name="name">
-    <label for="age">Age</label>
-    <input id="age" type="number" name="age">
-    <label for="gender">Gender</label>
-    <select id="gender" name="gender">
-        <option th:each="gender : ${genders}" th:value="${gender}" th:text="${gender.getGender()}" value="select gender">
-        </option>
-    </select>
-    <label for="transit">Transit Passenger?</label>
-    <select id="transit" name="isTransitPassenger">
-        <option>No</option>
-        <option>Yes</option>
-    </select>
-    <br>
-    <input type="submit" value="Add Passenger">
-</form>
+<main class="row">
+    <form method="post" class="col-xl-4 col-sm-6 col-xs-6">
+        <label for="name">Full Name</label>
+        <input id="name" type="text" name="name">
+        <label for="age">Age</label>
+        <input id="age" type="number" name="age">
+        <label for="gender">Gender</label>
+        <select id="gender" name="gender">
+            <option th:each="gender : ${genders}" th:value="${gender}" th:text="${gender.getGender()}"
+                    value="select gender">
+            </option>
+        </select>
+        <label for="transit">Transit Passenger?</label>
+        <select id="transit" name="isTransitPassenger">
+            <option>No</option>
+            <option>Yes</option>
+        </select>
+        <br>
+        <input type="submit" value="Add Passenger">
+    </form>
+</main>
 <footer th:insert="~{footer::copy}">Aviato &#169; 2021</footer>
 </body>
 </html>

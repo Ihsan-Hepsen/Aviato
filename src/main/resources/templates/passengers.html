@@ -14,8 +14,8 @@
         <a class="navbar-brand col-xl-5 col-xs-2 col-md-1" th:href="@{../home}">
             <img id="logo" src="../static/media/fav_icon.png" alt="logo">
         </a>
-        <a class="current col-xl-1 col-xs-8 col-md-2" th:href="@{../home}">Home</a>
-        <a class="col-xl-1 col-xs-8 col-md-2" th:href="@{../passengers}">Passengers</a>
+        <a class="col-xl-1 col-xs-8 col-md-2" th:href="@{../home}">Home</a>
+        <a class="current col-xl-1 col-xs-8 col-md-2" th:href="@{../passengers}">Passengers</a>
         <a class="col-xl-1 col-xs-8 col-md-2" th:href="@{../flights}">Flights</a>
         <a class="col-xl-2 col-xs-8 col-md-2" th:href="@{../passengers/add}">Add Passenger</a>
         <a class="col-xl-1 col-xs-8 col-md-2" th:href="@{../flights/add}">Add Flight</a>
@@ -35,6 +35,7 @@
             <th></th>
         </tr>
         </thead>
+        <tbody>
         <tr th:each="passenger : ${passengers}">
             <td th:text="${passenger.getName()}"></td>
             <td th:text="${passenger.getAge()}"></td>
@@ -43,6 +44,7 @@
             <td th:text="${passenger.getNumberOfFlights()}"></td>
             <td><a th:href="@{./passengers/details(pId=${passenger.getId()})}">details</a></td>
         </tr>
+        </tbody>
     </table>
 </main>
 <footer th:insert="~{footer::copy}">Aviato &#169; 2021</footer>
