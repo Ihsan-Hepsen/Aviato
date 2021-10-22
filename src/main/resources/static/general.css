@@ -11,7 +11,7 @@ header {
     background-image: url("../static/media/ucak.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    font-family: "Corbel Light", Verdana, sans-serif;
+    font-family: "Dubai Light", Verdana, sans-serif;
 }
 
 .flights {
@@ -170,7 +170,7 @@ input {
     font-size: 1rem;
     margin-right: auto;
     margin-left: auto;
-    width: 40%;
+    width: 52%;
     border: 1px solid red;
 }
 
@@ -183,6 +183,10 @@ input {
 
 .details > p > span {
     font-weight: 200;
+}
+
+.details > ul {
+    margin: .3rem .5rem;
 }
 
 

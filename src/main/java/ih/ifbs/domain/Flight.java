@@ -14,7 +14,7 @@ public class Flight extends Entity {
     private final String arrival;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private final LocalDate scheduledOn;
-    private final boolean isOnTime;
+    private boolean isOnTime;
     private final List<Passenger> passengerList;
 
 
@@ -60,6 +60,10 @@ public class Flight extends Entity {
 
     public boolean isOnTime() {
         return isOnTime;
+    }
+
+    public void setOnTime(boolean onTime) {
+        isOnTime = onTime;
     }
 
     public List<Passenger> getPassengerList() {

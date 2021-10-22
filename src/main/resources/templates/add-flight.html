@@ -40,17 +40,12 @@
         <input id="arrival" name="arrival" type="text">
         <label for="date">Date</label>
         <input id="date" name="scheduledOn" type="date">
-        <label>Flight Status</label>
-        <div class="radio-section">
-            <div class="form-check-inline">
-                <label for="flightStatus1" class="form-check-label">On Time</label>
-                <input id="flightStatus1" class="form-check-input" name="isOnTime" type="radio">
-            </div>
-            <div class="form-check-inline">
-                <label for="flightStatus2" class="form-check-label">Delayed</label>
-                <input id="flightStatus2" class="form-check-input" name="isOnTime" type="radio">
-            </div>
-        </div>
+        <label for="flightStatus">Flight Status</label>
+        <select id="flightStatus" name="isOnTime">
+            <option th:value="${flightDTO.TRUE}">On Time</option>
+            <option th:value="${flightDTO.FALSE}">Delayed</option>
+        </select>
+
         <input type="submit" value="Confirm Flight">
     </form>
 </main>

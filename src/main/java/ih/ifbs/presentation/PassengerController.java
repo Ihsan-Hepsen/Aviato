@@ -2,6 +2,7 @@ package ih.ifbs.presentation;
 
 import ih.ifbs.domain.Gender;
 import ih.ifbs.domain.Passenger;
+import ih.ifbs.presentation.dto.PassengerDTO;
 import ih.ifbs.services.PassengerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,7 +49,7 @@ public class PassengerController {
     }
 
     @PostMapping("/add")
-    public String collectFields(Passenger p) {
+    public String collectFields(PassengerDTO p) {
         logger.info("collecting data from passenger form fields...");
         Passenger passenger = new Passenger(p.getName(), p.getAge(), p.getGender(), p.isTransitPassenger());
         passengerService.createPassenger(passenger);

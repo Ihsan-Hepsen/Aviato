@@ -1,8 +1,10 @@
 package ih.ifbs.presentation.dto;
 
 import ih.ifbs.domain.FlightType;
+import ih.ifbs.domain.Passenger;
 import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDate;
+import java.util.List;
 
 public class FlightDTO {
 
@@ -14,6 +16,7 @@ public class FlightDTO {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate scheduledOn;
     private boolean isOnTime;
+    private List<Passenger> passengerList;
 
     public String getAirline() {
         return airline;
@@ -69,5 +72,13 @@ public class FlightDTO {
 
     public void setOnTime(boolean onTime) {
         isOnTime = onTime;
+    }
+
+    public List<Passenger> getPassengerList() {
+        return passengerList;
+    }
+
+    public void setPassengerList(List<Passenger> passengerList) {
+        this.passengerList = passengerList;
     }
 }

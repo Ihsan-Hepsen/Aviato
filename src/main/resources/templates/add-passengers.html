@@ -37,8 +37,8 @@
         </select>
         <label for="transit">Transit Passenger?</label>
         <select id="transit" name="isTransitPassenger">
-            <option>No</option>
-            <option>Yes</option>
+            <option th:value="false">No</option>
+            <option th:value="true">Yes</option>
         </select>
         <br>
         <input type="submit" value="Add Passenger">

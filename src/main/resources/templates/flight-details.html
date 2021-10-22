@@ -29,8 +29,16 @@
         <hr>
         <div class="details">
             <p>Airline: <span th:text="${flight.getAirline()}"></span></p>
+            <p>Flight Number: <span th:text="${flight.getFlightNumber()}"></span></p>
+            <p>Scheduled On: <span th:text="${flight.getFlightSchedule()}"></span></p>
             <p>Departure: <span th:text="${flight.getDeparture()}"></span></p>
             <p>Arrival: <span th:text="${flight.getArrival()}"></span></p>
+            <p>Flight Type: <span th:text="${flight.getFlightType().getValue()}"></span></p>
+            <p>Passengers;</p>
+            <ul th:each="passenger : ${flight.getPassengerList()}">
+                <li th:text="${passenger.getName()} + ', ' + ${passenger.getAge()} + ', '
+                 + ${passenger.isTransitPassenger() ? 'Transit' : 'Non-Transit'}"></li>
+            </ul>
         </div>
     </section>
 </main>

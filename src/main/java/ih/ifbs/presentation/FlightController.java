@@ -34,17 +34,20 @@ public class FlightController {
     }
 
     @GetMapping("/add")
-    public String showFlightForm(Model model) {
+    public String showFlightForm(Model model, FlightDTO flightDTO) {
         logger.info("Showing add passenger form");
         model.addAttribute("types", FlightType.values());
+        model.addAttribute("flightDTO", flightDTO.isOnTime());
         return "add-flight";
     }
 
     @PostMapping("/add")
     public String collectFields(FlightDTO flightDTO) {
         logger.info("collecting flight fields...");
-        Flight flight = new Flight(flightDTO.getAirline(), flightDTO.getFlightNumber(), flightDTO.getFlightType(),
-                flightDTO.getDeparture(), flightDTO.getArrival(), flightDTO.getScheduledOn(), flightDTO.isOnTime());
+        logger.warn("isOnTime: " + flightDTO.isOnTime());
+        Flight flight = new Flight(flightDTO.getAirline(), flightDTO.getFlightNumber(),
+                flightDTO.getFlightType(), flightDTO.getDeparture(), flightDTO.getArrival(),
+                flightDTO.getScheduledOn(), flightDTO.isOnTime());
         flightService.addFlight(flight);
         logger.info("new flight '" + flight.getFlightNumber() + "' added to flight list");
         return "redirect:/flights";
