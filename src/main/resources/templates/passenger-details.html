@@ -33,7 +33,7 @@
             <p>Transit: <span th:text="${passenger.isTransitPassenger() ? 'Yes' : 'No'}"></span></p>
             <p>Flights: <span th:text="${passenger.getNumberOfFlights()}"></span></p>
             <ul th:each="flight : ${passenger.getFlights()}">
-                <li th:text="${flight.getFlightNumber()} + ' - '+ ${flight.getDeparture()} + ' --> ' + ${flight.getArrival()}"></li>
+                <li th:text="${flight.getFlightNumber()} + ' - '+ ${flight.getDeparture()} + ' to ' + ${flight.getArrival()}"></li>
             </ul>
         </div>
     </section>

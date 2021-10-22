@@ -21,6 +21,7 @@ header {
 h1 {
     font-size: 4rem;
     font-weight: 700;
+    color: #fdfdff;
 }
 
 main > h1 {
@@ -82,10 +83,17 @@ p {
 }
 
 footer {
-    position: fixed;
+    color: #fdfdff;
+    position: relative;
     bottom: 0;
     width: 99%;
+}
+
+.footer-home {
     color: #fdfdff;
+    position: absolute;
+    bottom: 0;
+    width: 99%;
 }
 
 /* TABLES */
@@ -143,16 +151,28 @@ form {
     padding: 2rem;
 }
 
-.radio-section {
-    align-self: center;
-    display: block;
-    text-align: left;
+label {
+    margin: .2rem 0;
 }
 
-input {
+input, select {
     font-size: 90%;
     border-radius: 5px;
     border: none;
+    margin: 1rem 0;
+}
+
+.submit-button {
+    border: none;
+    border-radius: 5px;
+    background: #4aacd0;
+    color: #fdfdff;
+    margin: 1rem 0 .3rem 0;
+    padding: .2rem .3rem;
+}
+
+.submit-button:hover {
+    background: #4a9cd0;
 }
 /* FORMS - END */
 
@@ -160,7 +180,7 @@ input {
 .detail-box  {
     background: #fefefeee;
     border-radius: 10px;
-    width: 50%;
+    width: 300px;
     margin: .5rem auto 1rem auto;
     padding: 1rem 0;
 }
@@ -170,8 +190,7 @@ input {
     font-size: 1rem;
     margin-right: auto;
     margin-left: auto;
-    width: 52%;
-    border: 1px solid red;
+    width: 54%;
 }
 
 .details > p {
