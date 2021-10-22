@@ -7,7 +7,7 @@ public class PassengerDTO {
     private String name;
     private int age;
     private Gender gender;
-    private boolean isTransitPassenger;
+    private String isTransitPassenger;
 
     public String getName() {
         return name;
@@ -33,11 +33,11 @@ public class PassengerDTO {
         this.gender = gender;
     }
 
-    public boolean isTransitPassenger() {
+    public String getIsTransitPassenger() {
         return isTransitPassenger;
     }
 
-    public void setTransitPassenger(boolean isTransit) {
-        isTransitPassenger = isTransit;
+    public void setIsTransitPassenger(String isTransitPassenger) {
+        this.isTransitPassenger = isTransitPassenger;
     }
 }

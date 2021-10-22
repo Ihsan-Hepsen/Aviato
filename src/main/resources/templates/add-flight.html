@@ -42,8 +42,8 @@
         <input id="date" name="scheduledOn" type="date">
         <label for="flightStatus">Flight Status</label>
         <select id="flightStatus" name="isOnTime">
-            <option th:value="${flightDTO.TRUE}">On Time</option>
-            <option th:value="${flightDTO.FALSE}">Delayed</option>
+            <option value="true">On Time</option>
+            <option value="false">Delayed</option>
         </select>
         <input class="submit-button" type="submit" value="Confirm Flight">
     </form>

@@ -49,9 +49,10 @@ public class PassengerController {
     }
 
     @PostMapping("/add")
-    public String collectFields(PassengerDTO p) {
+    public String collectFields(PassengerDTO pDTO) {
         logger.info("collecting data from passenger form fields...");
-        Passenger passenger = new Passenger(p.getName(), p.getAge(), p.getGender(), p.isTransitPassenger());
+        Passenger passenger = new Passenger(pDTO.getName(), pDTO.getAge(),
+                pDTO.getGender(), pDTO.getIsTransitPassenger().equalsIgnoreCase("true"));
         passengerService.createPassenger(passenger);
         logger.info("new passenger '" + passenger.getName() + "' added");
         return "redirect:/passengers";

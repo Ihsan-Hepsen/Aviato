@@ -15,7 +15,7 @@ public class FlightDTO {
     private String arrival;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate scheduledOn;
-    private boolean isOnTime;
+    private String isOnTime;
     private List<Passenger> passengerList;
 
     public String getAirline() {
@@ -66,11 +66,11 @@ public class FlightDTO {
         this.scheduledOn = scheduledOn;
     }
 
-    public boolean isOnTime() {
+    public String getIsOnTime() {
         return isOnTime;
     }
 
-    public void setOnTime(boolean onTime) {
+    public void setIsOnTime(String onTime) {
         isOnTime = onTime;
     }
 
