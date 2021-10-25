@@ -9,10 +9,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/passengers")
@@ -36,6 +35,7 @@ public class PassengerController {
     @GetMapping("/add")
     public String showPassengerForm(Model model) {
         logger.info("Showing add passenger form");
+        model.addAttribute("passenger", new PassengerDTO());
         model.addAttribute("genders", Gender.values());
         return "add-passengers";
     }
@@ -49,13 +49,18 @@ public class PassengerController {
     }
 
     @PostMapping("/add")
-    public String collectFields(PassengerDTO pDTO) {
+    public String handlePassenger(@Valid @ModelAttribute("passenger") PassengerDTO pDTO, BindingResult errors, Model model) {
         logger.info("collecting data from passenger form fields...");
-        Passenger passenger = new Passenger(pDTO.getName(), pDTO.getAge(),
-                pDTO.getGender(), pDTO.getIsTransitPassenger().equalsIgnoreCase("true"));
-        passengerService.createPassenger(passenger);
-        logger.info("new passenger '" + passenger.getName() + "' added");
-        return "redirect:/passengers";
+        model.addAttribute("errors", errors);
+        if (errors.hasErrors()) {
+            errors.getAllErrors().forEach(error -> logger.error(error.toString()));
+            return "add-passengers";
+        } else {
+            Passenger passenger = new Passenger(pDTO.getName(), pDTO.getAge(),
+                    pDTO.getGender(), pDTO.getIsTransitPassenger().equalsIgnoreCase("true"));
+            passengerService.createPassenger(passenger);
+            logger.info("new passenger '" + passenger.getName() + "' added");
+            return "redirect:/passengers";
+        }
     }
-
 }

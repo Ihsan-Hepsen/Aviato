@@ -40,11 +40,8 @@
         <input id="arrival" name="arrival" type="text">
         <label for="date">Date</label>
         <input id="date" name="scheduledOn" type="date">
-        <label for="flightStatus">Flight Status</label>
-        <select id="flightStatus" name="isOnTime">
-            <option value="true">On Time</option>
-            <option value="false">Delayed</option>
-        </select>
+        <label for="flightStatus" class="form-check-label">Flight Is On Time?</label>
+        <input id="flightStatus" class="form-check-input" type="checkbox" name="onTime">
         <input class="submit-button" type="submit" value="Confirm Flight">
     </form>
 </main>

@@ -45,7 +45,7 @@ public class FlightController {
         logger.info("collecting flight fields...");
         Flight flight = new Flight(flightDTO.getAirline(), flightDTO.getFlightNumber(),
                 flightDTO.getFlightType(), flightDTO.getDeparture(), flightDTO.getArrival(),
-                flightDTO.getScheduledOn(), flightDTO.getIsOnTime().equalsIgnoreCase("true"));
+                flightDTO.getScheduledOn(), flightDTO.isOnTime());
         flightService.addFlight(flight);
         logger.info("new flight '" + flight.getFlightNumber() + "' added to flight list");
         return "redirect:/flights";
