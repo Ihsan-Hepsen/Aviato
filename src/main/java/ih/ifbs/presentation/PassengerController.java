@@ -1,6 +1,5 @@
 package ih.ifbs.presentation;
 
-import ih.ifbs.domain.Gender;
 import ih.ifbs.domain.Passenger;
 import ih.ifbs.presentation.dto.PassengerDTO;
 import ih.ifbs.services.PassengerService;
@@ -32,11 +31,11 @@ public class PassengerController {
         return "passengers";
     }
 
+    // Genders disappear after one invalid attempt, therefore I use Converter to fix the issue.
     @GetMapping("/add")
     public String showPassengerForm(Model model) {
         logger.info("Showing add passenger form");
         model.addAttribute("passenger", new PassengerDTO());
-        model.addAttribute("genders", Gender.values());
         return "add-passengers";
     }
 
@@ -57,7 +56,7 @@ public class PassengerController {
             return "add-passengers";
         } else {
             Passenger passenger = new Passenger(pDTO.getName(), pDTO.getAge(),
-                    pDTO.getGender(), pDTO.getIsTransitPassenger().equalsIgnoreCase("true"));
+                    pDTO.getGender(), pDTO.isTransitPassenger());
             passengerService.createPassenger(passenger);
             logger.info("new passenger '" + passenger.getName() + "' added");
             return "redirect:/passengers";

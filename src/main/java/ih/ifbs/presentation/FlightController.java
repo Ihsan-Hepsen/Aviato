@@ -6,13 +6,15 @@ import ih.ifbs.presentation.dto.FlightDTO;
 import ih.ifbs.services.FlightService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import javax.validation.Valid;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Controller
 @RequestMapping("/flights")
@@ -37,18 +39,29 @@ public class FlightController {
     public String showFlightForm(Model model) {
         logger.info("Showing add passenger form");
         model.addAttribute("types", FlightType.values());
+        model.addAttribute("flight", new FlightDTO());
+        model.addAttribute("today", LocalDateTime.now().
+                format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         return "add-flight";
     }
 
     @PostMapping("/add")
-    public String collectFields(FlightDTO flightDTO) {
-        logger.info("collecting flight fields...");
-        Flight flight = new Flight(flightDTO.getAirline(), flightDTO.getFlightNumber(),
-                flightDTO.getFlightType(), flightDTO.getDeparture(), flightDTO.getArrival(),
-                flightDTO.getScheduledOn(), flightDTO.isOnTime());
-        flightService.addFlight(flight);
-        logger.info("new flight '" + flight.getFlightNumber() + "' added to flight list");
-        return "redirect:/flights";
+    public String handleFlight(@Valid @ModelAttribute("flight") FlightDTO flightDTO, BindingResult errors, Model model) {
+        logger.info("collecting and checking flight fields...");
+        model.addAttribute("errors", errors);
+        if (errors.hasErrors()) {
+            errors.getAllErrors().forEach(error -> logger.error(error.toString()));
+            model.addAttribute("today", LocalDateTime.now().
+                    format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+            return "add-flight";
+        } else {
+            Flight flight = new Flight(flightDTO.getAirline(), flightDTO.getFlightNumber(),
+                    flightDTO.getFlightType(), flightDTO.getDeparture(), flightDTO.getArrival(),
+                    flightDTO.getScheduledOn(), flightDTO.isOnTime());
+            flightService.addFlight(flight);
+            logger.info("new flight '" + flight.getFlightNumber() + "' added to flight list");
+            return "redirect:/flights";
+        }
     }
 
     @GetMapping("/details")

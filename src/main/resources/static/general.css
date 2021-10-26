@@ -153,6 +153,7 @@ form {
 
 label {
     margin: .2rem 0;
+    align-self: flex-start;
 }
 
 input, select {
@@ -177,12 +178,13 @@ input, select {
 
 .alert-message-box {
     font-size: 70%;
+    margin: .4rem 0 .8rem 0;
 }
 
-.alert-message-box > p {
-    color: #000;
+.check-box {
+    margin: 2rem 0 .2rem 0;
+    align-self: flex-start;
 }
-
 /* FORMS - END */
 
 /* DETAIL BOXES */

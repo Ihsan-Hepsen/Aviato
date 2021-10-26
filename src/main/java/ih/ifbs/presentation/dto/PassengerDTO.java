@@ -2,20 +2,18 @@ package ih.ifbs.presentation.dto;
 
 import ih.ifbs.domain.Gender;
 import org.hibernate.validator.constraints.Range;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+
+import javax.validation.constraints.*;
 
 public class PassengerDTO {
 
     @NotBlank(message="Name field cannot be left empty!")
-    @Size(min=2, max=50, message="Name should consist of minimum of 2 characters or maximum 50 charters")
+    @Size(min=2, max=50, message="Name should consist of minimum of 2 characters and maximum of 50 charters")
     private String name;
     @Range(min=0, max=120, message="Invalid age. Please make sure age is between 0 and 120.")
     private int age;
     private Gender gender;
-    @NotEmpty
-    private String isTransitPassenger;
+    private boolean transitPassenger;
 
     public String getName() {
         return name;
@@ -41,11 +39,11 @@ public class PassengerDTO {
         this.gender = gender;
     }
 
-    public String getIsTransitPassenger() {
-        return isTransitPassenger;
+    public boolean isTransitPassenger() {
+        return transitPassenger;
     }
 
-    public void setIsTransitPassenger(String isTransitPassenger) {
-        this.isTransitPassenger = isTransitPassenger;
+    public void setTransitPassenger(boolean transitPassenger) {
+        this.transitPassenger = transitPassenger;
     }
 }
