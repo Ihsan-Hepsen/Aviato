@@ -33,6 +33,8 @@ public class DataSeeding implements CommandLineRunner {
         airlines.create(new Airline("Virgin Australia", 68, 40));
         airlines.create(new Airline("Bahamas Air", 10, 21));
         airlines.create(new Airline("Private Voyages", 11, 13));
+        airlines.create(new Airline("Iberia Airlines", 68, 120));
+        airlines.create(new Airline("All Nippon Airways", 220, 75));
 
         passengers.create(new Passenger("Johnny Thunder", 21, Gender.M, true));
         passengers.create(new Passenger("Anna Cooper", 23, Gender.F, true));
@@ -40,6 +42,8 @@ public class DataSeeding implements CommandLineRunner {
         passengers.create(new Passenger("Kilroy Barron", 52, Gender.M, false));
         passengers.create(new Passenger("Senor Palomar", 32, Gender.M, false));
         passengers.create(new Passenger("Kül Tigin", 37, Gender.M, false));
+        passengers.create(new Passenger("Valeria Ferreira", 26, Gender.F, false));
+        passengers.create(new Passenger("Akane Tanaka", 34, Gender.F, false));
 
         flights.create(new Flight("Qantas Airlines", "QF12", FlightType.COMM,
                 "Los Angeles","Sydney",
@@ -65,6 +69,12 @@ public class DataSeeding implements CommandLineRunner {
         flights.create(new Flight("Private Voyages", "HI1204", FlightType.PRIV,
                 "New York", "Miami",
                 LocalDate.of(2021, 10, 23), false));
+        flights.create(new Flight("Iberia Airlines", "IB3013", FlightType.COMM,
+                "Barcelona", "Madrid",
+                LocalDate.of(2021, 11, 19), true));
+        flights.create(new Flight("All Nippon Airways", "NH802", FlightType.COMM,
+                "Singapore", "Tokyo",
+                LocalDate.of(2021, 12, 13), true));
 
         airlines.read().get(0).addFlight(flights.read().get(0));
         airlines.read().get(1).addFlight(flights.read().get(1));
@@ -74,6 +84,8 @@ public class DataSeeding implements CommandLineRunner {
         airlines.read().get(4).addFlight(flights.read().get(4));
         airlines.read().get(5).addFlight(flights.read().get(2));
         airlines.read().get(5).addFlight(flights.read().get(7));
+        airlines.read().get(6).addFlight(flights.read().get(8));
+        airlines.read().get(7).addFlight(flights.read().get(9));
 
         flights.read().get(0).addPassenger(passengers.read().get(0));
         flights.read().get(5).addPassenger(passengers.read().get(0));
@@ -84,6 +96,8 @@ public class DataSeeding implements CommandLineRunner {
         flights.read().get(3).addPassenger(passengers.read().get(3));
         flights.read().get(3).addPassenger(passengers.read().get(4));
         flights.read().get(7).addPassenger(passengers.read().get(5));
+        flights.read().get(8).addPassenger(passengers.read().get(6));
+        flights.read().get(9).addPassenger(passengers.read().get(7));
 
         passengers.read().get(0).addFlight(flights.read().get(0));
         passengers.read().get(0).addFlight(flights.read().get(5));
@@ -94,5 +108,7 @@ public class DataSeeding implements CommandLineRunner {
         passengers.read().get(3).addFlight(flights.read().get(3));
         passengers.read().get(4).addFlight(flights.read().get(3));
         passengers.read().get(5).addFlight(flights.read().get(7));
+        passengers.read().get(6).addFlight(flights.read().get(8));
+        passengers.read().get(7).addFlight(flights.read().get(9));
     }
 }
