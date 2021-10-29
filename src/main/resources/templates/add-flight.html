@@ -9,18 +9,7 @@
     <title>Add Flight</title>
 </head>
 <body class="container-fluid index">
-<header>
-    <nav id="navbar" class="navbar row">
-        <a class="navbar-brand col-xl-5 col-xs-2 col-md-1" th:href="@{../home}">
-            <img id="logo" src="../static/media/fav_icon.png" alt="logo">
-        </a>
-        <a class="col-xl-1 col-xs-8 col-md-2" th:href="@{../home}">Home</a>
-        <a class="col-xl-1 col-xs-8 col-md-2" th:href="@{../passengers}">Passengers</a>
-        <a class="col-xl-1 col-xs-8 col-md-2" th:href="@{../flights}">Flights</a>
-        <a class="col-xl-2 col-xs-8 col-md-2" th:href="@{../passengers/add}">Add Passenger</a>
-        <a class="current col-xl-1 col-xs-8 col-md-2" th:href="@{../flights/add}">Add Flight</a>
-    </nav>
-</header>
+<header th:insert="~{nav::navbar}"></header>
 <h1 th:utext="#{heading}">Add Flight</h1>
 <main class="row">
     <form method="post" th:object="${flight}" class="col-xl-4 col-sm-6 col-xs-6">

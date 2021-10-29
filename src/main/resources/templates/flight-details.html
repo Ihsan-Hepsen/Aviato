@@ -9,18 +9,7 @@
     <title>Flight Details</title>
 </head>
 <body class="container-fluid index">
-<header>
-    <nav id="navbar" class="navbar row">
-        <a class="navbar-brand col-xl-5 col-xs-2 col-md-1" th:href="@{../home}">
-            <img id="logo" src="../static/media/fav_icon.png" alt="logo">
-        </a>
-        <a class="col-xl-1 col-xs-8 col-md-2" th:href="@{../home}">Home</a>
-        <a class="col-xl-1 col-xs-8 col-md-2" th:href="@{../passengers}">Passengers</a>
-        <a class="col-xl-1 col-xs-8 col-md-2 current" th:href="@{../flights}">Flights</a>
-        <a class="col-xl-2 col-xs-8 col-md-2" th:href="@{../passengers/add}">Add Passenger</a>
-        <a class="col-xl-1 col-xs-8 col-md-2" th:href="@{../flights/add}">Add Flight</a>
-    </nav>
-</header>
+<header th:insert="~{nav::navbar}"></header>
 <main class="row">
     <section class="detail-box col-xl-6">
         <h2><span th:utext="#{d_flight}"></span> <span th:text="${flight.getFlightNumber()} + ' '"></span><span th:utext="#{detail}"></span></h2>

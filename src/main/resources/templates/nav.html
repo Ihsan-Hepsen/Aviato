@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="navbar">
+    <nav id="navbar" class="navbar row">
+        <a class="navbar-brand col-xl-5 col-xs-2 col-md-1" th:href="@{../home}">
+            <img id="logo" src="../static/media/fav_icon.png" alt="logo">
+        </a>
+        <a th:utext="#{home}" class="col-xl-1 col-xs-8 col-md-2" th:href="@{../home}">Home</a>
+        <a th:utext="#{passengers_nav}" class="col-xl-1 col-xs-8 col-md-2" th:href="@{../passengers}">Passengers</a>
+        <a th:utext="#{flights_nav}" class="col-xl-1 col-xs-8 col-md-2" th:href="@{../flights}">Flights</a>
+        <a th:utext="#{add_passenger_nav}" class="col-xl-2 col-xs-8 col-md-2" th:href="@{../passengers/add}">Add Passenger</a>
+        <a th:utext="#{add_flight_nav}" class="col-xl-1 col-xs-8 col-md-2" th:href="@{../flights/add}">Add Flight</a>
+    </nav>
+</div>
+</body>
+</html>
