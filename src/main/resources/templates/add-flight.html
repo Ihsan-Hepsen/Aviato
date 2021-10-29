@@ -19,37 +19,36 @@
         <a class="col-xl-1 col-xs-8 col-md-2" th:href="@{../flights}">Flights</a>
         <a class="col-xl-2 col-xs-8 col-md-2" th:href="@{../passengers/add}">Add Passenger</a>
         <a class="current col-xl-1 col-xs-8 col-md-2" th:href="@{../flights/add}">Add Flight</a>
-        <!--        <span class="col-xl-1 col-xs-8 col-md-2"><a href="">En</a>/<a href="">Tr</a></span>-->
     </nav>
 </header>
-<h1>Add Flight</h1>
+<h1 th:utext="#{heading}">Add Flight</h1>
 <main class="row">
     <form method="post" th:object="${flight}" class="col-xl-4 col-sm-6 col-xs-6">
-        <label for="airline">Airline</label>
+        <label for="airline" th:utext="#{airline}">Airline</label>
         <input id="airline" name="airline" type="text" placeholder="Airline name">
         <div th:if="${#fields.detailedErrors('airline')}" th:errors="*{airline}" class="alert alert-danger alert-message-box" role="alert"></div>
-        <label for="flightNumber">Flight Number</label>
+        <label for="flightNumber" th:utext="#{f_number}">Flight Number</label>
         <input id="flightNumber" name="flightNumber" type="text">
         <div th:if="${#fields.detailedErrors('flightNumber')}" th:errors="*{flightNumber}" class="alert alert-danger alert-message-box" role="alert"></div>
-        <label for="flightType">Flight Type</label>
+        <label for="flightType" th:utext="#{f_type}">Flight Type</label>
         <select id="flightType" name="flightType">
             <option value="Commercial">Commercial</option>
             <option value="Private">Private</option>
         </select>
-        <label for="departure">Departure</label>
+        <label for="departure" th:utext="#{departure}">Departure</label>
         <input id="departure" name="departure" type="text" placeholder="Departure city">
         <div th:if="${#fields.detailedErrors('departure')}" th:errors="*{departure}" class="alert alert-danger alert-message-box" role="alert"></div>
-        <label for="arrival">Arrival</label>
+        <label for="arrival" th:utext="#{arrival}">Arrival</label>
         <input id="arrival" name="arrival" type="text" placeholder="Arrival city">
         <div th:if="${#fields.detailedErrors('arrival')}" th:errors="*{arrival}" class="alert alert-danger alert-message-box" role="alert"></div>
-        <label for="date">Date</label>
+        <label for="date" th:utext="#{date}">Date</label>
         <input id="date" name="scheduledOn" type="date" th:min="${today}">
         <div th:if="${#fields.detailedErrors('scheduledOn')}" th:errors="*{scheduledOn}" class="alert alert-danger alert-message-box" role="alert"></div>
         <div class="form-check-inline check-box">
             <input id="flightStatus" class="form-check-input" type="checkbox" name="onTime">
-            <label for="flightStatus" class="form-check-label">On Time</label>
+            <label for="flightStatus" class="form-check-label" th:utext="#{on_time}">On Time</label>
         </div>
-        <input class="submit-button" type="submit" value="Confirm Flight">
+        <input class="submit-button" type="submit" th:value="#{confirm}">
     </form>
 </main>
 <footer th:insert="~{footer::copy}">Aviato &#169; 2021</footer>
