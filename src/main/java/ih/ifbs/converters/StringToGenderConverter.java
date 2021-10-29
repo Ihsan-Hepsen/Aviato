@@ -1,4 +1,4 @@
-package ih.ifbs.util;
+package ih.ifbs.converters;
 
 import ih.ifbs.domain.Gender;
 import org.springframework.core.convert.converter.Converter;

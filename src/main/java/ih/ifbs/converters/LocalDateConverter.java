@@ -1,4 +1,4 @@
-package ih.ifbs.util;
+package ih.ifbs.converters;
 
 import com.google.gson.*;
 import org.springframework.stereotype.Component;

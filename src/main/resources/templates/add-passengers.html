@@ -25,9 +25,12 @@
 <h1>Add Passenger</h1>
 <main class="row">
     <form method="post" th:object="${passenger}" class="col-xl-4 col-sm-6 col-xs-6">
-        <label for="name">Full Name</label>
+        <label for="name">First Name</label>
         <input id="name" type="text" name="name">
         <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="alert alert-danger alert-message-box" role="alert"></div>
+        <label for="lastName">Last Name</label>
+        <input id="lastName" type="text" name="lastName">
+        <div th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="alert alert-danger alert-message-box" role="alert"></div>
         <label for="age">Age</label>
         <input id="age" type="number" name="age">
         <div th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="alert alert-danger alert-message-box" role="alert"></div>

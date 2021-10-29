@@ -29,7 +29,7 @@
         <div class="details">
             <p>Airline: <span th:text="${flight.getAirline()}"></span></p>
             <p>Flight Number: <span th:text="${flight.getFlightNumber()}"></span></p>
-            <p>Scheduled On: <span th:text="${flight.getFlightSchedule()} +
+            <p>Date: <span th:text="${flight.getFlightSchedule()} +
             ' (' + ${flight.isOnTime() ? 'On Time)' : 'Delayed)'}"></span></p>
             <p>Departure: <span th:text="${flight.getDeparture()}"></span></p>
             <p>Arrival: <span th:text="${flight.getArrival()}"></span></p>

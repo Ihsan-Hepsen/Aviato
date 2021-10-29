@@ -55,7 +55,8 @@ public class PassengerController {
             errors.getAllErrors().forEach(error -> logger.error(error.toString()));
             return "add-passengers";
         } else {
-            Passenger passenger = new Passenger(pDTO.getName(), pDTO.getAge(),
+            String fullName = pDTO.getName() + " " + pDTO.getLastName();
+            Passenger passenger = new Passenger(fullName, pDTO.getAge(),
                     pDTO.getGender(), pDTO.isTransitPassenger());
             passengerService.createPassenger(passenger);
             logger.info("new passenger '" + passenger.getName() + "' added");

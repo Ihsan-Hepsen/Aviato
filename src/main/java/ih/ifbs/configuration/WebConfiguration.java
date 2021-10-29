@@ -1,7 +1,7 @@
 package ih.ifbs.configuration;
 
-import ih.ifbs.util.StringToFlightTypeConverter;
-import ih.ifbs.util.StringToGenderConverter;
+import ih.ifbs.converters.StringToFlightTypeConverter;
+import ih.ifbs.converters.StringToGenderConverter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;

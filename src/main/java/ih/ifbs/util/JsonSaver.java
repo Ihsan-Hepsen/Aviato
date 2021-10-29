@@ -3,6 +3,7 @@ package ih.ifbs.util;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import ih.ifbs.converters.LocalDateConverter;
 import org.springframework.stereotype.Component;
 
 import java.io.FileWriter;
