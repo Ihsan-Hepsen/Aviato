@@ -1,0 +1,5 @@
+INSERT INTO PERSONS(NAME, FIRSTNAME)
+VALUES ('JONES', 'JACK'),
+       ('POTTER', 'JACK'),
+       ('POTTER', 'MIA'),
+       ('REED', 'JACK');
