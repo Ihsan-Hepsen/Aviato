@@ -10,14 +10,14 @@ public class Passenger extends Entity {
     private final int age;
     private final Gender gender;
     @SerializedName("transit")
-    private final boolean isTransitPassenger;
+    private final boolean transitPassenger;
     private transient final List<Flight> flights;
 
     public Passenger(String name, int age, Gender gender, boolean isTransitPassenger) {
         this.name = name;
         this.age = age;
         this.gender = gender;
-        this.isTransitPassenger = isTransitPassenger;
+        this.transitPassenger = isTransitPassenger;
         this.flights = new ArrayList<>();
     }
 
@@ -38,7 +38,7 @@ public class Passenger extends Entity {
     }
 
     public boolean isTransitPassenger() {
-        return isTransitPassenger;
+        return transitPassenger;
     }
 
     public List<Flight> getFlights() {
@@ -52,6 +52,6 @@ public class Passenger extends Entity {
     @Override
     public String toString() {
         return String.format("Name: %s\nAge: %d\nGender: %s\nTransit: %s\nFlights: %d\n",
-                name, age, gender.getGender(), isTransitPassenger ? "Yes" : "No", flights.size());
+                name, age, gender.getGender(), transitPassenger ? "Yes" : "No", flights.size());
     }
 }

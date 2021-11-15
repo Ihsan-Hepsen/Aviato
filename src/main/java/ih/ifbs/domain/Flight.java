@@ -14,7 +14,7 @@ public class Flight extends Entity {
     private final String arrival;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private final LocalDate scheduledOn;
-    private boolean isOnTime;
+    private boolean onTime;
     private final List<Passenger> passengerList;
 
 
@@ -26,7 +26,7 @@ public class Flight extends Entity {
         this.departure = departure;
         this.arrival = arrival;
         this.scheduledOn = scheduledOn;
-        this.isOnTime = isOnTime;
+        this.onTime = isOnTime;
         this.passengerList = new ArrayList<>();
     }
 
@@ -59,11 +59,11 @@ public class Flight extends Entity {
     }
 
     public boolean isOnTime() {
-        return isOnTime;
+        return onTime;
     }
 
     public void setOnTime(boolean onTime) {
-        isOnTime = onTime;
+        this.onTime = onTime;
     }
 
     public List<Passenger> getPassengerList() {
@@ -75,6 +75,6 @@ public class Flight extends Entity {
         return String.format("-%-18s, Flight: %-6s - %s to %s - Time: %d-%s-%d (%s) ~ Passengers: %d (%s Flight)\n",
                 airline, flightNumber, departure.toUpperCase(), arrival.toUpperCase(),
                 scheduledOn.getYear(), scheduledOn.getMonth().toString().subSequence(0, 3), scheduledOn.getDayOfMonth(),
-                isOnTime ? "OnTime" : "Delayed", passengerList.size(), flightType.getValue());
+                onTime ? "OnTime" : "Delayed", passengerList.size(), flightType.getValue());
     }
 }
