@@ -1,5 +1,7 @@
 package ih.ifbs.domain;
 
+import ih.ifbs.util.LookupUtil;
+
 public enum Gender {
     F("Female"), M("Male");
 
@@ -11,5 +13,9 @@ public enum Gender {
 
     public String getGender() {
         return gender;
+    }
+
+    static public Gender lookup(String id) {
+        return LookupUtil.lookup(Gender.class, id);
     }
 }

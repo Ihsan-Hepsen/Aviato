@@ -1,5 +1,7 @@
 package ih.ifbs.domain;
 
+import ih.ifbs.util.LookupUtil;
+
 public enum FlightType {
     COMM("Commercial"), PRIV("Private");
 
@@ -11,5 +13,9 @@ public enum FlightType {
 
     public String getValue() {
         return value;
+    }
+
+    static public FlightType lookup(String id) {
+        return LookupUtil.lookup(FlightType.class, id);
     }
 }

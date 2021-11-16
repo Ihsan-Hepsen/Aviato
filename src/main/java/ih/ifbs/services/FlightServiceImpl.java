@@ -1,6 +1,7 @@
 package ih.ifbs.services;
 
 import ih.ifbs.domain.Flight;
+import ih.ifbs.repository.HSQLFlightRepository;
 import ih.ifbs.repository.ListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,6 +16,7 @@ import java.util.stream.Stream;
 public class FlightServiceImpl implements FlightService {
 
     private final ListRepository<Flight> flightRepository;
+//    private final HSQLFlightRepository flightRepository;
 
     @Autowired
     public FlightServiceImpl(ListRepository<Flight> flightRepository) {
@@ -71,6 +73,7 @@ public class FlightServiceImpl implements FlightService {
                 .collect(Collectors.toList());
     }
 
+    @Override
     public Flight findById(int id) {
         return flightRepository.findById(id);
     }
