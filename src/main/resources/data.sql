@@ -13,7 +13,7 @@ VALUES ('Golden Wings', 'G1456', 'PRIV', 'Sydney', 'Gold Coast', DATE '2021-11-2
 
 -- SELECT * FROM FLIGHTS;
 
-INSERT INTO PASSENGERS(name, age, gender, transit, flights)
+INSERT INTO PASSENGERS(NAME, AGE, GENDER, TRANSIT, FLIGHTS)
 VALUES('Johnny Thunder', 21, 'M', TRUE, 3),
       ('Anna Cooper', 23, 'F', TRUE, 2),
       ('Padme Amidala', 35, 'F', FALSE, 1),
@@ -23,4 +23,4 @@ VALUES('Johnny Thunder', 21, 'M', TRUE, 3),
       ('Valaria Ferreria', 26, 'F', FALSE, 1),
       ('Akane Tanaka', 34, 'F', FALSE, 1);
 
-SELECT * FROM PASSENGERS;
+-- SELECT * FROM PASSENGERS;

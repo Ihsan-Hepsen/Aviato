@@ -1,11 +1,13 @@
-package ih.ifbs.repository;
+package ih.ifbs.repository.hsqlRepository;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
+@Component
 public class HSQLDatabaseCreator {
     private static final Logger log = LoggerFactory.getLogger(HSQLDatabaseCreator.class);
     private final JdbcTemplate jdbcTemplate;
@@ -40,7 +42,7 @@ public class HSQLDatabaseCreator {
                 "       ('Virgin Australia', 'VA734', 'COMM', 'Gold Coast', 'Melbourne', DATE '2021-10-23', false)," +
                 "       ('Private Voyages', 'HI1204', 'PRIV', 'New York', 'Miami', DATE '2021-10-23', false)," +
                 "       ('Iberia Airlines', 'IB3013', 'COMM', 'Barcelona', 'Madrid', DATE '2021-11-19', true)," +
-                "       ('All Nippon Airways', 'NH802', 'COMM', 'Singapore', 'Tokyo', DATE '2021-12-13', true);");
+                "       ( 'All Nippon Airways', 'NH802', 'COMM', 'Singapore', 'Tokyo', DATE '2021-12-13', true);");
         jdbcTemplate.update("DROP TABLE IF EXISTS PASSENGERS");
         jdbcTemplate.update("CREATE TABLE PASSENGERS(" +
                 "    ID INTEGER NOT NULL IDENTITY," +

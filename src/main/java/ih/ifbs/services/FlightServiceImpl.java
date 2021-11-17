@@ -1,9 +1,9 @@
 package ih.ifbs.services;
 
 import ih.ifbs.domain.Flight;
-import ih.ifbs.repository.HSQLFlightRepository;
-import ih.ifbs.repository.ListRepository;
+import ih.ifbs.repository.EntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import java.util.Collection;
 import java.util.List;
@@ -15,11 +15,10 @@ import java.util.stream.Stream;
 @Component
 public class FlightServiceImpl implements FlightService {
 
-    private final ListRepository<Flight> flightRepository;
-//    private final HSQLFlightRepository flightRepository;
+    private final EntityRepository<Flight> flightRepository;
 
     @Autowired
-    public FlightServiceImpl(ListRepository<Flight> flightRepository) {
+    public FlightServiceImpl(@Qualifier("HSQLFlightRepository") EntityRepository<Flight> flightRepository) {
         this.flightRepository = flightRepository;
     }
 

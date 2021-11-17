@@ -1,7 +1,8 @@
-package ih.ifbs.repository;
+package ih.ifbs.repository.hsqlRepository;
 
 import ih.ifbs.domain.Gender;
 import ih.ifbs.domain.Passenger;
+import ih.ifbs.repository.EntityRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -14,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @Component
-public class HSQLPassengerRepository implements HSQLRepository<Passenger> {
+public class HSQLPassengerRepository implements EntityRepository<Passenger> {
 
     private static final Logger log = LoggerFactory.getLogger(HSQLFlightRepository.class);
     private final JdbcTemplate jdbcTemplate;
@@ -27,12 +28,13 @@ public class HSQLPassengerRepository implements HSQLRepository<Passenger> {
                 .usingGeneratedKeyColumns("ID");
     }
 
-    @Override
     public Passenger mapRow(ResultSet rs, int mapRow) throws SQLException {
         log.debug("Returning passengers with ResultSet");
-        return new Passenger(rs.getString("name"), rs.getInt("age"),
+        Passenger passenger = new Passenger(rs.getString("name"), rs.getInt("age"),
                 Gender.lookup(rs.getString("gender")),
                 rs.getBoolean("transit"));
+        passenger.setId(rs.getInt("id"));
+        return passenger;
     }
 
     @Override
@@ -41,9 +43,10 @@ public class HSQLPassengerRepository implements HSQLRepository<Passenger> {
     }
 
     @Override
-    public Passenger save(Passenger passenger) {
+    public Passenger create(Passenger passenger) {
         log.debug("Saving passenger: " + passenger);
         Map<String, Object> parameters = new HashMap<>();
+//        parameters.put("ID", passenger.getId());
         parameters.put("NAME", passenger.getName());
         parameters.put("AGE", passenger.getAge());
         parameters.put("GENDER", passenger.getGender().toString());
@@ -54,15 +57,20 @@ public class HSQLPassengerRepository implements HSQLRepository<Passenger> {
     }
 
     @Override
-    public List<Passenger> delete(Passenger passenger) {
+    public void delete(Passenger passenger) {
         log.debug("Deleting passenger: " + passenger);
-        return jdbcTemplate.query("DELETE FROM PASSENGERS WHERE ID = ?", this::mapRow, passenger.getId());
+        jdbcTemplate.queryForObject("DELETE FROM PASSENGERS WHERE ID = ?", this::mapRow, passenger.getId());
     }
 
     @Override
-    public List<Passenger> findById(int id) {
-        log.debug("Trying to find passenger with id: " + id);
-        return jdbcTemplate.query("SELECT * FROM PASSENGERS WHERE id = ?", this::mapRow, id);
+    public void update(Passenger passenger) {
+
+    }
+
+    @Override
+    public Passenger findById(int id) {
+        log.debug("Passenger found with id: " + id);
+        return jdbcTemplate.queryForObject("SELECT * FROM PASSENGERS WHERE id = ?", this::mapRow, id);
     }
 
     public List<Passenger> findByName(String name) {
