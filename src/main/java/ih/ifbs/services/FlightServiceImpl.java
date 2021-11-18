@@ -2,6 +2,8 @@ package ih.ifbs.services;
 
 import ih.ifbs.domain.Flight;
 import ih.ifbs.repository.EntityRepository;
+import ih.ifbs.repository.FlightRepository;
+import ih.ifbs.repository.ListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
