@@ -3,6 +3,7 @@ package ih.ifbs.repository.hsqlRepository;
 import ih.ifbs.domain.Flight;
 import ih.ifbs.domain.FlightType;
 import ih.ifbs.repository.EntityRepository;
+import ih.ifbs.repository.FlightRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -16,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 @Component
-public class HSQLFlightRepository implements EntityRepository<Flight> {
+public class HSQLFlightRepository implements FlightRepository {
 
     private static final Logger log = LoggerFactory.getLogger(HSQLFlightRepository.class);
     private final JdbcTemplate jdbcTemplate;
@@ -61,17 +62,18 @@ public class HSQLFlightRepository implements EntityRepository<Flight> {
         return flight;
     }
 
-    @Override
+//    @Override
     public void delete(Flight flight) {
         log.debug("Deleting flight: " + flight);
         jdbcTemplate.queryForObject("DELETE FROM FLIGHTS WHERE ID = ?", this::mapRow, flight.getId());
     }
 
-    @Override
+//    @Override
     public void update(Flight flight) {
 
     }
 
+    @Override
     public Flight findById(int id) {
         log.debug("Flight found with id: " + id);
         return jdbcTemplate.queryForObject("SELECT * FROM FLIGHTS WHERE id = ?", this::mapRow, id);

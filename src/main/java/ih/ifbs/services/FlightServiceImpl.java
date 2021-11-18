@@ -17,10 +17,10 @@ import java.util.stream.Stream;
 @Component
 public class FlightServiceImpl implements FlightService {
 
-    private final EntityRepository<Flight> flightRepository;
+    private final FlightRepository flightRepository;
 
     @Autowired
-    public FlightServiceImpl(@Qualifier("HSQLFlightRepository") EntityRepository<Flight> flightRepository) {
+    public FlightServiceImpl(@Qualifier("HSQLFlightRepository") FlightRepository flightRepository) {
         this.flightRepository = flightRepository;
     }
 

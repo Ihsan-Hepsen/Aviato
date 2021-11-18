@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class PassengerRepositoryImpl extends ListRepository<Passenger> {
+public class PassengerRepositoryImpl extends ListRepository<Passenger> implements PassengerRepository {
 
     private static final Logger logger = LoggerFactory.getLogger(PassengerRepositoryImpl.class);
 

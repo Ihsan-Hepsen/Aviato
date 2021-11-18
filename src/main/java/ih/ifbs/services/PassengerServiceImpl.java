@@ -4,6 +4,7 @@ import ih.ifbs.domain.Flight;
 import ih.ifbs.domain.Passenger;
 import ih.ifbs.repository.EntityRepository;
 import ih.ifbs.repository.ListRepository;
+import ih.ifbs.repository.PassengerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -13,11 +14,10 @@ import java.util.stream.Collectors;
 @Component
 public class PassengerServiceImpl implements PassengerService {
     
-//    private final ListRepository<Passenger> repository;
-    private final EntityRepository<Passenger> repository;
+    private final PassengerRepository repository;
 
     @Autowired
-    public PassengerServiceImpl(@Qualifier("HSQLPassengerRepository") EntityRepository<Passenger> repository) {
+    public PassengerServiceImpl(@Qualifier("HSQLPassengerRepository") PassengerRepository repository) {
         this.repository = repository;
     }
 

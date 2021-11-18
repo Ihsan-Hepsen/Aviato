@@ -5,9 +5,8 @@ import ih.ifbs.domain.Passenger;
 import java.util.List;
 
 public interface PassengerRepository {
-    Passenger createPassenger(Passenger passenger);
-
-    Passenger createPassenger(Passenger passenger, Flight flight);
-
-    List<Passenger> getPassengers();
+    Passenger create(Passenger passenger);
+//    Passenger create(Passenger passenger, Flight flight);
+    Passenger findById(int id);
+    List<Passenger> read();
 }

@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 @Component
-public class FlightRepositoryImpl extends ListRepository<Flight> {
+public class FlightRepositoryImpl extends ListRepository<Flight> implements FlightRepository {
 
     private static final Logger logger = LoggerFactory.getLogger(FlightRepositoryImpl.class);
 

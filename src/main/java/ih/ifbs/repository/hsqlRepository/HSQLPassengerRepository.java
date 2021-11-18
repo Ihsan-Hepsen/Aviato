@@ -3,6 +3,7 @@ package ih.ifbs.repository.hsqlRepository;
 import ih.ifbs.domain.Gender;
 import ih.ifbs.domain.Passenger;
 import ih.ifbs.repository.EntityRepository;
+import ih.ifbs.repository.PassengerRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -15,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @Component
-public class HSQLPassengerRepository implements EntityRepository<Passenger> {
+public class HSQLPassengerRepository implements PassengerRepository {
 
     private static final Logger log = LoggerFactory.getLogger(HSQLFlightRepository.class);
     private final JdbcTemplate jdbcTemplate;
@@ -56,13 +57,11 @@ public class HSQLPassengerRepository implements EntityRepository<Passenger> {
         return passenger;
     }
 
-    @Override
     public void delete(Passenger passenger) {
         log.debug("Deleting passenger: " + passenger);
         jdbcTemplate.queryForObject("DELETE FROM PASSENGERS WHERE ID = ?", this::mapRow, passenger.getId());
     }
 
-    @Override
     public void update(Passenger passenger) {
 
     }
