@@ -10,7 +10,7 @@ public class Airline extends Entity {
     private final int totalDestinations;
     private transient final List<Flight> flightList;
 
-
+    // TODO: Improve this class!!
     public Airline(String airlineName, int fleetSize, int totalDestinations) {
         this.airlineName = airlineName;
         this.fleetSize = fleetSize;

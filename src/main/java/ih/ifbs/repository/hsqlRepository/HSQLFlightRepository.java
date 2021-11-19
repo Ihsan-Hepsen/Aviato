@@ -6,9 +6,11 @@ import ih.ifbs.repository.EntityRepository;
 import ih.ifbs.repository.FlightRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Component;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -23,6 +25,7 @@ public class HSQLFlightRepository implements FlightRepository {
     private final JdbcTemplate jdbcTemplate;
     private final SimpleJdbcInsert flightInserter;
 
+    @Autowired
     public HSQLFlightRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
         this.flightInserter = new SimpleJdbcInsert(jdbcTemplate)
@@ -47,10 +50,9 @@ public class HSQLFlightRepository implements FlightRepository {
     }
 
     @Override
-    public Flight create(Flight flight){
+    public Flight create(Flight flight) {
         log.debug("Saving flight: " + flight);
         Map<String, Object> parameters = new HashMap<>();
-//        parameters.put("ID", flight.getId());
         parameters.put("AIRLINE", flight.getAirline());
         parameters.put("FLIGHT_NUMBER", flight.getFlightNumber());
         parameters.put("FLIGHT_TYPE", flight.getFlightType().toString());
@@ -62,14 +64,15 @@ public class HSQLFlightRepository implements FlightRepository {
         return flight;
     }
 
-//    @Override
     public void delete(Flight flight) {
         log.debug("Deleting flight: " + flight);
         jdbcTemplate.queryForObject("DELETE FROM FLIGHTS WHERE ID = ?", this::mapRow, flight.getId());
     }
 
-//    @Override
     public void update(Flight flight) {
+        log.debug("Updating: " + flight);
+        Flight flightUpdated = jdbcTemplate.queryForObject("SELECT * FROM FLIGHTS WHERE ID = ?",
+                this::mapRow, flight.getId());
 
     }
 
@@ -79,9 +82,8 @@ public class HSQLFlightRepository implements FlightRepository {
         return jdbcTemplate.queryForObject("SELECT * FROM FLIGHTS WHERE id = ?", this::mapRow, id);
     }
 
-    // TODO: Change this method!
-    public List<Flight> findByFlightNumber(String flightNumber) {
-        log.debug("Trying to find flight '" + flightNumber + "'...");
-        return jdbcTemplate.query("SELECT * FROM FLIGHTS WHERE FLIGHT_NUMBER = ?", this::mapRow, flightNumber);
+    public Flight findByFlightNumber(String flightNumber) {
+        return jdbcTemplate.queryForObject("SELECT * FROM FLIGHTS WHERE FLIGHT_NUMBER = ?",
+                this::mapRow, flightNumber);
     }
 }

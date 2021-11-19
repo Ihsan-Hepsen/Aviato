@@ -5,6 +5,7 @@ import ih.ifbs.repository.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import java.time.LocalDate;
@@ -18,6 +19,7 @@ public class DataSeeding implements CommandLineRunner {
     private final ListRepository<Passenger> passengers;
     private final ListRepository<Flight> flights;
 
+    @Autowired
     public DataSeeding(ListRepository<Airline> airlineRepository, ListRepository<Passenger> passengerRepository,
                        ListRepository<Flight> flightRepository) {
         this.airlines = airlineRepository;

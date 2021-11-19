@@ -6,9 +6,11 @@ import ih.ifbs.repository.EntityRepository;
 import ih.ifbs.repository.PassengerRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Component;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -22,6 +24,7 @@ public class HSQLPassengerRepository implements PassengerRepository {
     private final JdbcTemplate jdbcTemplate;
     private final SimpleJdbcInsert passengerInserter;
 
+    @Autowired
     public HSQLPassengerRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
         this.passengerInserter = new SimpleJdbcInsert(jdbcTemplate)
@@ -47,7 +50,6 @@ public class HSQLPassengerRepository implements PassengerRepository {
     public Passenger create(Passenger passenger) {
         log.debug("Saving passenger: " + passenger);
         Map<String, Object> parameters = new HashMap<>();
-//        parameters.put("ID", passenger.getId());
         parameters.put("NAME", passenger.getName());
         parameters.put("AGE", passenger.getAge());
         parameters.put("GENDER", passenger.getGender().toString());
