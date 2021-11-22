@@ -14,7 +14,7 @@ public class PassengerServiceImpl implements PassengerService {
     private final PassengerRepository repository;
 
     @Autowired
-    public PassengerServiceImpl(@Qualifier("passengerRepositoryImpl") PassengerRepository repository) {
+    public PassengerServiceImpl(@Qualifier("HSQLPassengerRepository") PassengerRepository repository) {
         this.repository = repository;
     }
 

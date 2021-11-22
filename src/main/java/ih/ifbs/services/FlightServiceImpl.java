@@ -18,7 +18,7 @@ public class FlightServiceImpl implements FlightService {
     private final FlightRepository flightRepository;
 
     @Autowired
-    public FlightServiceImpl(@Qualifier("flightRepositoryImpl") FlightRepository flightRepository) {
+    public FlightServiceImpl(@Qualifier("HSQLFlightRepository") FlightRepository flightRepository) {
         this.flightRepository = flightRepository;
     }
 

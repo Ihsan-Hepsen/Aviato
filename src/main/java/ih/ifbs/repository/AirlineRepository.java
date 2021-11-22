@@ -4,5 +4,7 @@ import ih.ifbs.domain.Airline;
 import java.util.List;
 
 public interface AirlineRepository {
-    List<Airline> getAirlines();
+    Airline create(Airline airline);
+    Airline findById(int id);
+    List<Airline> read();
 }
