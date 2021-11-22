@@ -1,10 +1,11 @@
 package ih.ifbs.services;
 
 import ih.ifbs.domain.Flight;
-import ih.ifbs.repository.FlightRepository;
+import ih.ifbs.repository.EntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 import java.util.Collection;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -12,13 +13,13 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@Component
+@Service
 public class FlightServiceImpl implements FlightService {
 
-    private final FlightRepository flightRepository;
+    private final EntityRepository<Flight> flightRepository;
 
     @Autowired
-    public FlightServiceImpl(@Qualifier("HSQLFlightRepository") FlightRepository flightRepository) {
+    public FlightServiceImpl(EntityRepository<Flight> flightRepository) {
         this.flightRepository = flightRepository;
     }
 

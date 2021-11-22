@@ -1,7 +1,7 @@
 package ih.ifbs.bootstrap;
 
 import ih.ifbs.domain.*;
-import ih.ifbs.repository.*;
+import ih.ifbs.repository.collectionbased.ListRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;

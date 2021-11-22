@@ -1,6 +1,7 @@
-package ih.ifbs.repository;
+package ih.ifbs.repository.collectionbased;
 
 import ih.ifbs.domain.Entity;
+import ih.ifbs.repository.EntityRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import java.util.ArrayList;

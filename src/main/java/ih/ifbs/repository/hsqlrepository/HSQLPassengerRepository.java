@@ -1,15 +1,15 @@
-package ih.ifbs.repository.hsqlRepository;
+package ih.ifbs.repository.hsqlrepository;
 
 import ih.ifbs.domain.Gender;
 import ih.ifbs.domain.Passenger;
 import ih.ifbs.repository.EntityRepository;
-import ih.ifbs.repository.PassengerRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,8 +17,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Component
-public class HSQLPassengerRepository implements PassengerRepository {
+@Repository
+@Profile("dev")
+public class HSQLPassengerRepository implements EntityRepository<Passenger> {
 
     private static final Logger log = LoggerFactory.getLogger(HSQLFlightRepository.class);
     private final JdbcTemplate jdbcTemplate;

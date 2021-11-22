@@ -1,17 +1,17 @@
-package ih.ifbs.repository;
+package ih.ifbs.repository.collectionbased;
 
 import ih.ifbs.domain.Airline;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Repository;
 
-@Component
-public class AirlineRepositoryImpl extends ListRepository<Airline> implements AirlineRepository {
+@Repository
+@Profile("man-repo")
+public class AirlineRepositoryImpl extends ListRepository<Airline> {
 
     private static final Logger logger = LoggerFactory.getLogger(AirlineRepositoryImpl.class);
 
-    @Autowired
     public AirlineRepositoryImpl() {
         logger.debug("Creating airline repository");
     }

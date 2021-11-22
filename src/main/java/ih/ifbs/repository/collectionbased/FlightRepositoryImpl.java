@@ -1,12 +1,14 @@
-package ih.ifbs.repository;
+package ih.ifbs.repository.collectionbased;
 
 import ih.ifbs.domain.Flight;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Repository;
 
-@Component
-public class FlightRepositoryImpl extends ListRepository<Flight> implements FlightRepository {
+@Repository
+@Profile("man-repo")
+public class FlightRepositoryImpl extends ListRepository<Flight> {
 
     private static final Logger logger = LoggerFactory.getLogger(FlightRepositoryImpl.class);
 

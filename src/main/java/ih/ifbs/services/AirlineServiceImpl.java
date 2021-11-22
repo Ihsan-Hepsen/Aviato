@@ -1,18 +1,21 @@
 package ih.ifbs.services;
 
 import ih.ifbs.domain.Airline;
-import ih.ifbs.repository.ListRepository;
+import ih.ifbs.repository.EntityRepository;
+import ih.ifbs.repository.collectionbased.ListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
-@Component
+@Service
 public class AirlineServiceImpl implements AirlineService {
 
-    private final ListRepository<Airline> repository;
+    private final EntityRepository<Airline> repository;
 
     @Autowired
-    public AirlineServiceImpl(ListRepository<Airline> airlineRepository) {
+    public AirlineServiceImpl(EntityRepository<Airline> airlineRepository) {
         this.repository = airlineRepository;
     }
 
