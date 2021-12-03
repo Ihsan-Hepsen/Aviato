@@ -1,9 +1,9 @@
 package ih.ifbs.repository;
 
-import ih.ifbs.domain.Entity;
+import ih.ifbs.domain.EntityClass;
 import java.util.List;
 
-public interface EntityRepository <T extends Entity> {
+public interface EntityRepository <T extends EntityClass> {
     List<T> read();
     T create(T t);
     T findById(int id);

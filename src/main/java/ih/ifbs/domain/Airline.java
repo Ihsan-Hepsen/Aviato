@@ -1,13 +1,28 @@
 package ih.ifbs.domain;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Airline extends Entity {
+@Entity
+@Table(name = "airlines")
+public class Airline extends EntityClass {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(name = "airline", nullable = false, length = 50)
     private final String airlineName;
+
+    @Column(name = "fleet_size", nullable = false)
     private final int fleetSize;
+
+    @Column(name = "destinations", nullable = false)
     private final int totalDestinations;
+
+    @Column(name = "flights", nullable = false)
+    @OneToMany(targetEntity = Flight.class, mappedBy = "id", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private transient final List<Flight> flightList;
 
     // TODO: Improve this class!!
@@ -15,6 +30,13 @@ public class Airline extends Entity {
         this.airlineName = airlineName;
         this.fleetSize = fleetSize;
         this.totalDestinations = totalDestinations;
+        this.flightList = new ArrayList<>();
+    }
+
+    protected Airline() {
+        this.airlineName = null;
+        this.fleetSize = 0;
+        this.totalDestinations = 0;
         this.flightList = new ArrayList<>();
     }
 

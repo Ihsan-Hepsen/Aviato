@@ -1,20 +1,47 @@
 package ih.ifbs.domain;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Flight extends Entity {
+@Entity
+@Table(name = "FLIGHTS")
+public class Flight extends EntityClass {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(name = "airline", nullable = false, length = 50)
     private final String airline;
+
+    @Column(name = "flight_number", nullable = false, length = 25, unique = true)
     private final String flightNumber;
+
+    @Column(name = "flight_type", nullable = false)
+    @Enumerated(EnumType.STRING)
     private final FlightType flightType;
+
+    @Column(name = "departure", nullable = false, length = 50)
     private final String departure;
+
+    @Column(name = "arrival", nullable = false, length = 50)
     private final String arrival;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "date", nullable = false)
     private final LocalDate scheduledOn;
+
+    @Column(name = "status", nullable = false)
     private boolean onTime;
+
+    @Column(name = "passengers", nullable = false)
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinTable(name = "passenger_flight",
+            joinColumns = @JoinColumn(name = "passenger_id"),
+            inverseJoinColumns = @JoinColumn(name = "flight_id"))
     private final List<Passenger> passengerList;
 
 
@@ -27,6 +54,17 @@ public class Flight extends Entity {
         this.arrival = arrival;
         this.scheduledOn = scheduledOn;
         this.onTime = isOnTime;
+        this.passengerList = new ArrayList<>();
+    }
+
+    protected Flight() {
+        this.airline = null;
+        this.flightNumber = null;
+        this.flightType = null;
+        this.departure = null;
+        this.arrival = null;
+        this.scheduledOn = null;
+        this.onTime = false;
         this.passengerList = new ArrayList<>();
     }
 

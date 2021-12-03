@@ -1,6 +1,6 @@
 package ih.ifbs.domain;
 
-public abstract class Entity {
+public abstract class EntityClass {
     protected int id;
 
     public int getId() {
@@ -14,9 +14,9 @@ public abstract class Entity {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Entity entity)) return false;
+        if (!(o instanceof EntityClass entityClass)) return false;
 
-        return id == entity.id;
+        return id == entityClass.id;
     }
 
     @Override

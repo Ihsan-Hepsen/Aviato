@@ -3,14 +3,33 @@ package ih.ifbs.domain;
 import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
+import javax.persistence.*;
 
-public class Passenger extends Entity {
+@Entity
+@Table(name = "passengers")
+public class Passenger extends EntityClass {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(name = "name", nullable = false, length = 100)
     private final String name;
+
+    @Column(name = "age", nullable = false)
     private final int age;
+
+    @Column(name = "gender")
+    @Enumerated(EnumType.STRING)
     private final Gender gender;
+
     @SerializedName("transit")
+    @Column(name = "passenger_type", nullable = false)
     private final boolean transitPassenger;
+
+    @Column(name = "flights", nullable = false)
+    @ManyToMany(mappedBy = "flights", cascade = {CascadeType. DETACH,
+            CascadeType.MERGE, CascadeType. PERSIST, CascadeType. REFRESH})
     private transient final List<Flight> flights;
 
     public Passenger(String name, int age, Gender gender, boolean isTransitPassenger) {
@@ -18,6 +37,14 @@ public class Passenger extends Entity {
         this.age = age;
         this.gender = gender;
         this.transitPassenger = isTransitPassenger;
+        this.flights = new ArrayList<>();
+    }
+
+    protected Passenger() {
+        this.name = null;
+        this.age = 18;
+        this.gender = null;
+        this.transitPassenger = false;
         this.flights = new ArrayList<>();
     }
 
