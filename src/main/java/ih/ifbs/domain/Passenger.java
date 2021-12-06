@@ -27,10 +27,20 @@ public class Passenger extends EntityClass {
     @Column(name = "passenger_type", nullable = false)
     private final boolean transitPassenger;
 
-    @Column(name = "flights", nullable = false)
+//    @Column(name = "flights", nullable = false)
     @ManyToMany(mappedBy = "flights", cascade = {CascadeType. DETACH,
-            CascadeType.MERGE, CascadeType. PERSIST, CascadeType. REFRESH})
+            CascadeType.MERGE, CascadeType. PERSIST, CascadeType. REFRESH}, fetch = FetchType.EAGER)
     private transient final List<Flight> flights;
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public Passenger(String name, int age, Gender gender, boolean isTransitPassenger) {
         this.name = name;
@@ -43,7 +53,7 @@ public class Passenger extends EntityClass {
     protected Passenger() {
         this.name = null;
         this.age = 18;
-        this.gender = null;
+        this.gender = Gender.M; // default
         this.transitPassenger = false;
         this.flights = new ArrayList<>();
     }

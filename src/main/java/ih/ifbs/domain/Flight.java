@@ -14,6 +14,16 @@ public class Flight extends EntityClass {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Column(name = "airline", nullable = false, length = 50)
     private final String airline;
 
@@ -37,8 +47,8 @@ public class Flight extends EntityClass {
     @Column(name = "status", nullable = false)
     private boolean onTime;
 
-    @Column(name = "passengers", nullable = false)
-    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+//    @Column(name = "passengerList", nullable = false)
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
     @JoinTable(name = "passenger_flight",
             joinColumns = @JoinColumn(name = "passenger_id"),
             inverseJoinColumns = @JoinColumn(name = "flight_id"))
