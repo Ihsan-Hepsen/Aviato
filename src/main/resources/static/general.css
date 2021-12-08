@@ -85,6 +85,7 @@ p {
 footer {
     color: #fdfdff;
     position: relative;
+    font-weight: 700;
     bottom: 0;
     width: 99%;
 }

@@ -27,10 +27,12 @@ public class Passenger extends EntityClass {
     @Column(name = "passenger_type", nullable = false)
     private final boolean transitPassenger;
 
-//    @Column(name = "flights", nullable = false)
-    @ManyToMany(mappedBy = "flights", cascade = {CascadeType. DETACH,
-            CascadeType.MERGE, CascadeType. PERSIST, CascadeType. REFRESH}, fetch = FetchType.EAGER)
-    private transient final List<Flight> flights;
+    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
+            fetch = FetchType.EAGER)
+    @JoinTable(name = "passenger_flight",
+            joinColumns = @JoinColumn(name = "flight_id"),
+            inverseJoinColumns = @JoinColumn(name = "passenger_id"))
+    private final List<Flight> flights;
 
     @Override
     public int getId() {

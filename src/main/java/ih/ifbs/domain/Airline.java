@@ -40,6 +40,16 @@ public class Airline extends EntityClass {
         this.flightList = new ArrayList<>();
     }
 
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void addFlight(Flight flight) {
         flightList.add(flight);
     }
