@@ -1,19 +1,21 @@
 html {
     text-align: center;
     font-size: 1.2em;
+    background: #fdfdff;
+    font-family: "Dubai Light", Verdana, sans-serif;
 }
 
 header {
     margin-bottom: 1rem;
 }
 
-.index-page {
-    /*background-image: url("../static/media/ucak4.jpg");*/
-    /*background-repeat: no-repeat;*/
-    /*background-size: cover;*/
-    background: #fdfdff;
-    font-family: "Dubai Light", Verdana, sans-serif;
-}
+/*.index-page {*/
+/*    !*background-image: url("../static/media/ucak4.jpg");*!*/
+/*    !*background-repeat: no-repeat;*!*/
+/*    !*background-size: cover;*!*/
+/*    background: #fdfdff;*/
+/*    font-family: "Dubai Light", Verdana, sans-serif;*/
+/*}*/
 
 .flights {
     background: #4a9cd0;
@@ -67,7 +69,7 @@ p {
 }
 
 .img-main {
-    background-image: url("../static/media/ucak4.jpg");
+    background-image: url("../static/media/ucak6.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     /*width: auto;*/
@@ -81,8 +83,8 @@ p {
     font-size: 8.3em;
     /*color: #fdfdff;*/
     color: #f8f9fa;
-    font-weight: 800;
-    padding: .4rem;
+    font-weight: 600;
+    padding: .5rem;
     position: relative;
     top: 2rem;
     margin: 2rem 1rem .1rem 1rem;
