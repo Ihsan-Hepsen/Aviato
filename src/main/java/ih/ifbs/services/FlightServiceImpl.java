@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -75,5 +76,10 @@ public class FlightServiceImpl implements FlightService {
     @Override
     public Flight findById(int id) {
         return flightRepository.findById(id).orElseThrow();
+    }
+
+    @Override
+    public Flight findByFlightNumber(String flightNumber) {
+        return flightRepository.findByFlightNumber(flightNumber.toUpperCase(Locale.ROOT));
     }
 }

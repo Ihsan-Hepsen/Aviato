@@ -8,12 +8,22 @@
     <script defer th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
     <title>Aviato</title>
 </head>
-<body class="container-fluid index">
+<body class="container-fluid index-page">
 <header th:insert="~{nav::navbar}"></header>
 <main>
-    <h1 class="text-lg-start">Aviato</h1>
-    <p class="text-lg-start" th:utext="#{catchline}">Let's discover places!</p>
+    <section class="img-main container-xxl">
+        <h1 class="text-lg-center">Aviato</h1>
+        <p class="text-lg-center" th:utext="#{catchline}">Let's discover places!</p>
+    </section>
+    <section class="fn-search">
+<!--        <form method="post" th:action="@{/flights/flight-search/{fn}(fn = #{})}" class="col-xl-4 col-sm-6 col-xs-6 form-fn-search">-->
+<!--            <h2>Search Flights</h2>-->
+<!--            <label for="flight-number"></label>-->
+<!--            <input id="flight-number" type="text" placeholder="Enter flight number here">-->
+<!--            <input class="submit-button" type="submit" th:value="Search">-->
+<!--        </form>-->
+    </section>
 </main>
-<footer class="footer-home" th:insert="~{footer::copy}">Aviato &#169; 2021</footer>
+<footer th:insert="~{footer::copy}">Aviato &#169; 2021</footer>
 </body>
 </html>

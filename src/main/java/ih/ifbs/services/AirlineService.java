@@ -9,4 +9,5 @@ public interface AirlineService {
     Airline findById(int id);
     Airline addAirline(Airline airline);
     List<Airline> getAllAirlines();
+    Airline findAirlineByAirlineName(String airline);
 }

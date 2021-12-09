@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomePageController {
     private final Logger logger = LoggerFactory.getLogger(HomePageController.class);
 
-    @GetMapping
+    @GetMapping({"", "/", "/home"})
     public String displayIndexPage() {
         logger.info("Index page is on display.");
         return "index";

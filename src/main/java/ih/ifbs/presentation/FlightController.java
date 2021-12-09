@@ -6,7 +6,6 @@ import ih.ifbs.presentation.dto.FlightDTO;
 import ih.ifbs.services.FlightService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -65,9 +64,17 @@ public class FlightController {
     }
 
     @GetMapping("/details")
-    public String flightDetail(@RequestParam(value = "flightId") int id, Model model) {
+    public String showFlightDetail(@RequestParam(value = "flightId") int id, Model model) {
         logger.debug("Showing details of the flight " + id);
         Flight f = flightService.findById(id);
+        model.addAttribute("flight", f);
+        return "flight-details";
+    }
+
+    @RequestMapping(value = "/flight-search/{fn}", method = RequestMethod.GET)
+    public String showFlightDetail(@PathVariable String flightNumber, Model model) {
+        Flight f = flightService.findByFlightNumber(flightNumber);
+        logger.debug("Showing details of the flight " + f.getId());
         model.addAttribute("flight", f);
         return "flight-details";
     }

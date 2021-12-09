@@ -31,4 +31,9 @@ public class AirlineServiceImpl implements AirlineService {
     public List<Airline> getAllAirlines() {
         return repository.findAll();
     }
+
+    @Override
+    public Airline findAirlineByAirlineName(String airline) {
+        return repository.findAirlineByAirlineName(airline);
+    }
 }

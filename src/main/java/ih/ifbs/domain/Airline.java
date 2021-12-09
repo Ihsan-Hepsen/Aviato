@@ -62,7 +62,7 @@ public class Airline extends EntityClass {
         return fleetSize;
     }
 
-    public double getTotalDestinations() {
+    public int getTotalDestinations() {
         return totalDestinations;
     }
 

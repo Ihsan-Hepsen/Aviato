@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{../static/general.css}">
+    <link rel="icon" type="image/png" th:href="@{../static/media/fav_icon.png}"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <script defer th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+    <title>Airline Details</title>
+</head>
+<body class="container-fluid index">
+<header th:insert="~{nav::navbar}"></header>
+<main class="row">
+    <section class="detail-box col-xl-6">
+        <h2><span th:text="${airline.getAirlineName() + ' '}"></span><span th:utext="#{detail}"></span></h2>
+        <hr>
+        <div class="details">
+            <p><b>Fleet Size: </b><span th:utext="${airline.getFleetSize()} + ' ' + #{fleet_size}"></span></p>
+            <p><b>Destinations: </b><span th:utext="${airline.getTotalDestinations()} + ' ' + #{destinations}"></span></p>
+        </div>
+    </section>
+</main>
+</body>
+</html>
