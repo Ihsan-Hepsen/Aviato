@@ -16,12 +16,12 @@
         <p class="text-lg-center" th:utext="#{catchline}">Let's discover places!</p>
     </section>
     <section class="fn-search">
-<!--        <form method="post" th:action="@{/flights/flight-search/{fn}(fn = #{})}" class="col-xl-4 col-sm-6 col-xs-6 form-fn-search">-->
-<!--            <h2>Search Flights</h2>-->
-<!--            <label for="flight-number"></label>-->
-<!--            <input id="flight-number" type="text" placeholder="Enter flight number here">-->
-<!--            <input class="submit-button" type="submit" th:value="Search">-->
-<!--        </form>-->
+        <form method="post" th:action="@{../flights/details}" class="col-xl-4 col-sm-6 col-xs-6 form-fn-search">
+            <h2>Search Flights</h2>
+            <label for="flight-number"></label>
+            <input id="flight-number" name="fn" type="text" placeholder="Enter flight number here" required>
+            <input class="submit-button" type="submit" th:value="Search">
+        </form>
     </section>
 </main>
 <footer th:insert="~{footer::copy}">Aviato &#169; 2021</footer>

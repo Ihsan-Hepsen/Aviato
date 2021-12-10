@@ -16,9 +16,4 @@ public class HomePageController {
         logger.info("Index page is on display.");
         return "index";
     }
-
-    @GetMapping("/passengers")
-    public String handleNavigation() {
-        return "redirect:/passengers";
-    }
 }

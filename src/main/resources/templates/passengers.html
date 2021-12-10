@@ -20,7 +20,17 @@
             <th th:utext="#{gender}">Gender</th>
             <th th:utext="#{transit}">Transit</th>
             <th th:utext="#{flights}">Flights</th>
-            <th></th>
+            <th><div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                    List By
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                    <li><a th:href="@{../passengers}" class="dropdown-item">All Passengers</a></li>
+                    <li><a th:href="@{../passengers/filtered(t = true)}" class="dropdown-item">Transit Passengers</a></li>
+                    <li><a th:href="@{../passengers/filtered(t = false)}" class="dropdown-item">Non-transit Passengers</a></li>
+                </ul>
+            </div></th>
         </tr>
         </thead>
         <tbody>
@@ -30,7 +40,7 @@
             <td th:text="${passenger.getGender()}"></td>
             <td th:utext="${passenger.isTransitPassenger()} ? #{t_yes} : #{t_no}"></td>
             <td th:text="${passenger.getNumberOfFlights()}"></td>
-            <td><a th:href="@{./passengers/details(pId=${passenger.getId()})}" th:utext="#{p_detail}">details</a></td>
+            <td><a th:href="@{../passengers/details(pId=${passenger.getId()})}" th:utext="#{p_detail}">details</a></td>
         </tr>
         </tbody>
     </table>

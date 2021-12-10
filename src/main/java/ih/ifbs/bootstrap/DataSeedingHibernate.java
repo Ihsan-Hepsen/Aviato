@@ -135,6 +135,7 @@ public class DataSeedingHibernate implements CommandLineRunner {
         p1.addFlight(f6);
         p1.addFlight(f7);
         p2.addFlight(f2);
+        p2.addFlight(f5);
         p3.addFlight(f3);
         p4.addFlight(f4);
         p5.addFlight(f5);

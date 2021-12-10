@@ -6,11 +6,13 @@ import ih.ifbs.services.PassengerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 @Controller
 @RequestMapping("/passengers")
@@ -45,6 +47,14 @@ public class PassengerController {
         logger.debug("Showing details of " + passenger);
         model.addAttribute("passenger", passenger);
         return "passenger-details";
+    }
+
+    @RequestMapping(value = "/filtered{t}", method = RequestMethod.GET)
+    public String showFilteredPassengers(@PathVariable("t") @RequestParam(value = "t") String condition, Model model) {
+        boolean isTransit = Boolean.parseBoolean(condition);
+        logger.debug("Showing all " + isTransit + " passengers");
+        model.addAttribute("passengers", passengerService.findAllByTransitPassenger(isTransit));
+        return "passengers";
     }
 
     @PostMapping("/add")

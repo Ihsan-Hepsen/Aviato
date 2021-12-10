@@ -40,4 +40,10 @@ public class PassengerServiceImpl implements PassengerService {
                 .filter(n -> isTransit == n.isTransitPassenger())
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<Passenger> findAllByTransitPassenger(boolean isTransit) {
+        return repository.findAllByTransitPassenger(isTransit);
+    }
+
 }
