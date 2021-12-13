@@ -1,9 +1,11 @@
 package ih.ifbs.presentation;
 
+import ih.ifbs.domain.Airline;
 import ih.ifbs.domain.Flight;
 import ih.ifbs.domain.FlightType;
 import ih.ifbs.exceptions.FlightNotFoundException;
 import ih.ifbs.presentation.dto.FlightDTO;
+import ih.ifbs.services.AirlineService;
 import ih.ifbs.services.FlightService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.time.LocalDateTime;
@@ -26,10 +27,12 @@ public class FlightController {
 
     private final Logger logger = LoggerFactory.getLogger(FlightController.class);
     private final FlightService flightService;
+    private final AirlineService airlineService;
 
     @Autowired
-    public FlightController(FlightService flightService) {
+    public FlightController(FlightService flightService, AirlineService airlineService) {
         this.flightService = flightService;
+        this.airlineService = airlineService;
     }
 
     @GetMapping
@@ -42,6 +45,7 @@ public class FlightController {
     @GetMapping("/add")
     public String showFlightForm(Model model) {
         logger.info("Showing add passenger form");
+        model.addAttribute("airlines", airlineService.getAllAirlineNames());
         model.addAttribute("types", FlightType.values());
         model.addAttribute("flight", new FlightDTO());
         model.addAttribute("today", LocalDateTime.now().
@@ -57,13 +61,18 @@ public class FlightController {
             errors.getAllErrors().forEach(error -> logger.error(error.toString()));
             model.addAttribute("today", LocalDateTime.now().
                     format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+            model.addAttribute("airlines", airlineService.getAllAirlineNames());
+            model.addAttribute("types", FlightType.values());
             return "add-flight";
         } else {
-            Flight flight = new Flight(flightDTO.getAirline(), flightDTO.getFlightNumber(),
+            Airline airline = airlineService.findAirlineByAirlineName(flightDTO.getAirline());
+            Flight flight = new Flight(airline, flightDTO.getFlightNumber(),
                     flightDTO.getFlightType(), flightDTO.getDeparture(), flightDTO.getArrival(),
                     flightDTO.getScheduledOn(), flightDTO.isOnTime());
             flightService.addFlight(flight);
+//            airlineService.findAirlineByAirlineName(airline.getAirlineName()).addFlight(flight);  // adding flight to Airline
             logger.info("new flight '" + flight.getFlightNumber() + "' added to flight list");
+            logger.info("new flight '" + flight.getFlightNumber() + "' added to Airline: " + flight.getAirline());
             return "redirect:/flights";
         }
     }

@@ -1,6 +1,7 @@
 package ih.ifbs.domain;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -14,9 +15,10 @@ public class Flight extends EntityClass {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "airline", nullable = false, length = 50)
-//    private final Airline airline;
-    private final String airline;
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinColumn(name="airline_flight")
+    private final Airline airline;
+//    private final String airline;
 
     @Column(name = "flight_number", nullable = false, length = 25, unique = true)
     private final String flightNumber;
@@ -38,12 +40,12 @@ public class Flight extends EntityClass {
     @Column(name = "status", nullable = false)
     private boolean onTime;
 
-    @ManyToMany(targetEntity = Passenger.class, mappedBy = "flights", cascade = {CascadeType. DETACH,
-            CascadeType.MERGE, CascadeType. PERSIST, CascadeType. REFRESH}, fetch = FetchType.EAGER)
+    @ManyToMany(targetEntity = Passenger.class, mappedBy = "flights", cascade = {CascadeType.DETACH,
+            CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
     private final List<Passenger> passengerList;
 
 
-    public Flight(String airline, String flightNumber, FlightType flightType, String departure,
+    public Flight(Airline airline, String flightNumber, FlightType flightType, String departure,
                   String arrival, LocalDate scheduledOn, boolean isOnTime) {
         this.airline = airline;
         this.flightNumber = flightNumber;
@@ -80,7 +82,7 @@ public class Flight extends EntityClass {
         passengerList.add(passenger);
     }
 
-    public String getAirline() {
+    public Airline getAirline() {
         return airline;
     }
 

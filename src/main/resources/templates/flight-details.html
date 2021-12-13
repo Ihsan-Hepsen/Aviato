@@ -15,7 +15,9 @@
         <h2><span th:utext="#{d_flight}"></span> <span th:text="${flight.getFlightNumber()} + ' '"></span><span th:utext="#{detail}"></span></h2>
         <hr>
         <div class="details">
-            <p><b><span th:utext="#{d_airline}"></span></b><span th:text="${flight.getAirline()}"></span><a th:href="@{/airlines/airline-details(an = ${flight.getAirline()})}"> click to see details</a></p>
+            <p><b><span th:utext="#{d_airline}"></span></b><span th:text="${flight.getAirline().getAirlineName()}"></span>
+                <a th:href="@{/airlines/airline-details(an = ${flight.getAirline().getAirlineName()})}">
+                    click to see details</a></p>
             <p><b><span th:utext="#{d_fn}"></span></b><span th:text="${flight.getFlightNumber()}"></span></p>
             <p><b><span th:utext="#{d_date}"></span></b><span th:text="${flight.getFlightSchedule()} + ' '"></span><span th:utext="${flight.isOnTime()} ? #{d_on_time} : #{d_delayed}"></span></p>
             <p><b><span th:utext="#{d_departure}"></span></b><span th:text="${flight.getDeparture()}"></span></p>

@@ -14,7 +14,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
-import java.util.stream.Stream;
 
 @Configuration
 //@Profile("dev-hiber")
@@ -48,6 +47,12 @@ public class DataSeedingHibernate implements CommandLineRunner {
         Airline a6 = new Airline("Private Voyages", 11, 13);
         Airline a7 = new Airline("Iberia Airlines", 68, 120);
         Airline a8 = new Airline("All Nippon Airways", 220, 75);
+//        Airline a9 = new Airline("Emirates Airlines", 252, 161);
+//        Airline a10 = new Airline("Air Canada", 168, 194);
+//        Airline a11 = new Airline("KLM (Royal Dutch Airlines)", 149, 145);
+//        Airline a12 = new Airline("South African Airlines", 49, 42);
+//        Airline a13 = new Airline("Singapore Airlines", 145, 130);
+//        Airline a14 = new Airline("Golden Wings", 6, 17);
 
         Passenger p1 = new Passenger("Johnny Thunder", 21, Gender.M, true);
         Passenger p2 = new Passenger("Anna Cooper", 23, Gender.F, true);
@@ -58,34 +63,34 @@ public class DataSeedingHibernate implements CommandLineRunner {
         Passenger p7 = new Passenger("Valeria Ferreira", 26, Gender.F, false);
         Passenger p8 = new Passenger("Akane Tanaka", 34, Gender.F, false);
 
-        Flight f1 = new Flight("Qantas Airlines", "QF12", FlightType.COMM,
+        Flight f1 = new Flight(a1, "QF12", FlightType.COMM,
                 "Los Angeles", "Sydney",
                 LocalDate.of(2021, 10, 21), true);
-        Flight f2 = new Flight("Turkish Airlines", "TK77", FlightType.COMM,
+        Flight f2 = new Flight(a2, "TK77", FlightType.COMM,
                 "Istanbul", "Miami",
                 LocalDate.of(2021, 10, 22), false);
-        Flight f3 = new Flight("Private Voyages", "HI4506", FlightType.PRIV,
+        Flight f3 = new Flight(a6, "HI4506", FlightType.PRIV,
                 "Honolulu", "Sydney",
                 LocalDate.of(2021, 10, 21), true);
-        Flight f4 = new Flight("Air New Zealand", "NZ6141", FlightType.COMM,
+        Flight f4 = new Flight(a3, "NZ6141", FlightType.COMM,
                 "Auckland", "Sydney",
                 LocalDate.of(2021, 10, 22), false);
-        Flight f5 = new Flight("Bahamas Air", "BHS224", FlightType.COMM,
+        Flight f5 = new Flight(a5, "BHS224", FlightType.COMM,
                 "Miami", "Nassau",
                 LocalDate.of(2021, 10, 23), false);
-        Flight f6 = new Flight("Virgin Australia", "VA526", FlightType.COMM,
+        Flight f6 = new Flight(a4, "VA526", FlightType.COMM,
                 "Sydney", "Gold Coast",
                 LocalDate.of(2021, 10, 22), true);
-        Flight f7 = new Flight("Virgin Australia", "VA734", FlightType.COMM,
+        Flight f7 = new Flight(a4, "VA734", FlightType.COMM,
                 "Gold Coast", "Melbourne",
                 LocalDate.of(2021, 10, 23), false);
-        Flight f8 = new Flight("Private Voyages", "HI1204", FlightType.PRIV,
+        Flight f8 = new Flight(a6, "HI1204", FlightType.PRIV,
                 "New York", "Miami",
                 LocalDate.of(2021, 10, 23), false);
-        Flight f9 = new Flight("Iberia Airlines", "IB3013", FlightType.COMM,
+        Flight f9 = new Flight(a7, "IB3013", FlightType.COMM,
                 "Barcelona", "Madrid",
                 LocalDate.of(2021, 11, 19), true);
-        Flight f10 = new Flight("All Nippon Airways", "NH802", FlightType.COMM,
+        Flight f10 = new Flight(a8, "NH802", FlightType.COMM,
                 "Singapore", "Tokyo",
                 LocalDate.of(2021, 12, 13), true);
 
@@ -99,6 +104,12 @@ public class DataSeedingHibernate implements CommandLineRunner {
         airlines.save(a6);
         airlines.save(a7);
         airlines.save(a8);
+//        airlines.save(a9);
+//        airlines.save(a10);
+//        airlines.save(a11);
+//        airlines.save(a12);
+//        airlines.save(a13);
+//        airlines.save(a14);
 
         flights.save(f1);
         flights.save(f2);
@@ -151,28 +162,5 @@ public class DataSeedingHibernate implements CommandLineRunner {
         f8.addPassenger(p6);
         f9.addPassenger(p7);
         f10.addPassenger(p8);
-
-//        em.getTransaction().begin();
-//        em.persist(f1);
-//        em.persist(f2);
-//        em.persist(f3);
-//        em.persist(f4);
-//        em.persist(f5);
-//        em.persist(f6);
-//        em.persist(f7);
-//        em.persist(f8);
-//        em.persist(f9);
-//        em.persist(f10);
-//
-//        em.persist(p1);
-//        em.persist(annaCooper);
-//        em.persist(padmeAmidala);
-//        em.persist(kilroyBarron);
-//        em.persist(senorPaloma);
-//        em.persist(kulTigin);
-//        em.persist(valeriaFerreria);
-//        em.persist(akaneTeneka);
-//        em.getTransaction().commit();
-//        em.close();
     }
 }

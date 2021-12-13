@@ -13,16 +13,21 @@
 <h1 th:utext="#{heading}">Add Flight</h1>
 <main class="row">
     <form method="post" th:object="${flight}" class="col-xl-4 col-sm-6 col-xs-6">
+<!--        <label for="airline" th:utext="#{airline}">Airline</label>-->
+<!--        <input id="airline" name="airline" type="text" placeholder="Airline name">-->
         <label for="airline" th:utext="#{airline}">Airline</label>
-        <input id="airline" name="airline" type="text" placeholder="Airline name">
+        <select id="airline" name="airline" type="text">Select Airline
+            <option th:each="airline : ${airlines}" th:value="${airline.toString()}" th:text="${airline.toString()}"></option>
+        </select>
         <div th:if="${#fields.detailedErrors('airline')}" th:errors="*{airline}" class="alert alert-danger alert-message-box" role="alert"></div>
         <label for="flightNumber" th:utext="#{f_number}">Flight Number</label>
         <input id="flightNumber" name="flightNumber" type="text">
         <div th:if="${#fields.detailedErrors('flightNumber')}" th:errors="*{flightNumber}" class="alert alert-danger alert-message-box" role="alert"></div>
         <label for="flightType" th:utext="#{f_type}">Flight Type</label>
         <select id="flightType" name="flightType">
-            <option value="Commercial">Commercial</option>
-            <option value="Private">Private</option>
+<!--            <option value="Commercial">Commercial</option>-->
+<!--            <option value="Private">Private</option>-->
+            <option th:each="type : ${types}" th:value="${type.getValue()}" th:text="${type.getValue()}"></option>
         </select>
         <label for="departure" th:utext="#{departure}">Departure</label>
         <input id="departure" name="departure" type="text" placeholder="Departure city">

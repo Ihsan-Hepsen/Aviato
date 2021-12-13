@@ -18,7 +18,7 @@ import java.util.stream.Stream;
 @Service
 public class FlightServiceImpl implements FlightService {
 
-//    private final EntityRepository<Flight> flightRepository;
+    //    private final EntityRepository<Flight> flightRepository;
     private final FlightRepository flightRepository;
 
     @Autowired
@@ -84,9 +84,9 @@ public class FlightServiceImpl implements FlightService {
     @Override
     @Transactional
     public Flight findByFlightNumber(String flightNumber) {
-        Flight flight = flightRepository.findByFlightNumber(flightNumber.toUpperCase(Locale.ROOT));
+        flightNumber = flightNumber.toUpperCase(Locale.ROOT);
+        Flight flight = flightRepository.findByFlightNumber(flightNumber);
         if (flight == null) {
-            flightNumber = flightNumber.toUpperCase(Locale.ROOT);
             throw new FlightNotFoundException(flightNumber, "Flight '" + flightNumber + "' not found!");
         }
         return flight;

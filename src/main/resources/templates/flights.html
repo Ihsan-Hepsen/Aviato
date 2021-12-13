@@ -26,7 +26,7 @@
         </thead>
         <tbody>
         <tr th:each="flight : ${flights}">
-            <td th:text="${flight.getAirline()}"></td>
+            <td th:text="${flight.getAirline().getAirlineName()}"></td>
             <td th:text="${flight.getFlightNumber()}"></td>
             <td th:text="${flight.getDeparture()}"></td>
             <td th:text="${flight.getArrival()}"></td>

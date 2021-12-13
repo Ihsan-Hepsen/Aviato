@@ -21,11 +21,9 @@ public class Airline extends EntityClass {
     @Column(name = "destinations", nullable = false)
     private final int totalDestinations;
 
-    @Column(name = "flights", nullable = false)
-    @OneToMany(targetEntity = Flight.class, mappedBy = "id", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private transient final List<Flight> flightList;
+    @OneToMany(mappedBy = "airline", cascade = CascadeType.ALL)
+    private final List<Flight> flightList;
 
-    // TODO: Improve this class!!
     public Airline(String airlineName, int fleetSize, int totalDestinations) {
         this.airlineName = airlineName;
         this.fleetSize = fleetSize;

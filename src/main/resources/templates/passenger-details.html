@@ -21,7 +21,8 @@
             <p><b><span th:utext="#{p_d_transit}"></span></b><span th:text="${passenger.isTransitPassenger()} ? #{p_d_yes} : #{p_d_no}"></span></p>
             <p><b><span th:utext="#{p_d_flights}"></span></b><span th:text="${passenger.getNumberOfFlights()}"></span></p>
             <ul th:each="flight : ${passenger.getFlights()}">
-                <li th:text="${flight.getFlightNumber()} + ': '+ ${flight.getDeparture()} + ' ' + #{p_d_d1} + ' '+ ${flight.getArrival()} + ' ' + #{p_d_d2}"></li>
+                <li th:text="${flight.getFlightNumber()} + ': '+ ${flight.getDeparture()} + ' ' + #{p_d_d1} +
+                 ' '+ ${flight.getArrival()} + ' ' + #{p_d_d2}"></li>
             </ul>
         </div>
     </section>
