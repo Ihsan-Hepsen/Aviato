@@ -15,6 +15,7 @@ public class Flight extends EntityClass {
     private int id;
 
     @Column(name = "airline", nullable = false, length = 50)
+//    private final Airline airline;
     private final String airline;
 
     @Column(name = "flight_number", nullable = false, length = 25, unique = true)

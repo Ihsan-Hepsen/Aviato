@@ -1,9 +1,12 @@
 package ih.ifbs.services;
 
 import ih.ifbs.domain.Flight;
+import ih.ifbs.exceptions.FlightNotFoundException;
 import ih.ifbs.repository.hsqlrepository.FlightRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
 import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
@@ -79,7 +82,13 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
+    @Transactional
     public Flight findByFlightNumber(String flightNumber) {
-        return flightRepository.findByFlightNumber(flightNumber.toUpperCase(Locale.ROOT));
+        Flight flight = flightRepository.findByFlightNumber(flightNumber.toUpperCase(Locale.ROOT));
+        if (flight == null) {
+            flightNumber = flightNumber.toUpperCase(Locale.ROOT);
+            throw new FlightNotFoundException(flightNumber, "Flight '" + flightNumber + "' not found!");
+        }
+        return flight;
     }
 }

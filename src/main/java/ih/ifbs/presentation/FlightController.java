@@ -2,6 +2,7 @@ package ih.ifbs.presentation;
 
 import ih.ifbs.domain.Flight;
 import ih.ifbs.domain.FlightType;
+import ih.ifbs.exceptions.FlightNotFoundException;
 import ih.ifbs.presentation.dto.FlightDTO;
 import ih.ifbs.services.FlightService;
 import org.slf4j.Logger;
@@ -12,6 +13,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -74,14 +78,18 @@ public class FlightController {
 
     @RequestMapping(value = "/details", method = RequestMethod.POST)
     public String flightSearch(@Param("fn") @RequestParam(value = "fn") String flightNumber, Model model) {
-        try {
-            Flight f = flightService.findByFlightNumber(flightNumber);
-            logger.debug("Showing details of the flight " + f.getId());
-            model.addAttribute("flight", f);
-        } catch (NullPointerException e) {
-            logger.warn("Provided Flight Number: '" + flightNumber + "' is not valid!");
-            return "redirect:../home";
-        }
+        Flight f = flightService.findByFlightNumber(flightNumber);
+        logger.debug("Showing details of the flight id:" + f.getId());
+        model.addAttribute("flight", f);
         return "flight-details";
+    }
+
+    @ExceptionHandler(FlightNotFoundException.class)
+    public ModelAndView flightNotFoundHandler(HttpServletRequest request, Exception e) {
+        logger.error("Error: " + e.getMessage() + " - Request URI: " + request.getRequestURI());
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("exception", e);
+        mav.setViewName("flights-error");
+        return mav;
     }
 }

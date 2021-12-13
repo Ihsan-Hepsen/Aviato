@@ -5,6 +5,8 @@ import ih.ifbs.repository.EntityRepository;
 import ih.ifbs.repository.hsqlrepository.PassengerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,6 +28,14 @@ public class PassengerServiceImpl implements PassengerService {
 
     @Override
     public Passenger createPassenger(Passenger passenger) {
+//        return repository.save(passenger);
+        if (passenger != null) {
+            try {
+                throw new SQLException();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
         return repository.save(passenger);
     }
 
