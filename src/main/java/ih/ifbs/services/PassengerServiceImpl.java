@@ -28,14 +28,6 @@ public class PassengerServiceImpl implements PassengerService {
 
     @Override
     public Passenger createPassenger(Passenger passenger) {
-//        return repository.save(passenger);
-        if (passenger != null) {
-            try {
-                throw new SQLException();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
         return repository.save(passenger);
     }
 
