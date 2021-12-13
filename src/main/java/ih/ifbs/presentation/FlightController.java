@@ -70,9 +70,10 @@ public class FlightController {
                     flightDTO.getFlightType(), flightDTO.getDeparture(), flightDTO.getArrival(),
                     flightDTO.getScheduledOn(), flightDTO.isOnTime());
             flightService.addFlight(flight);
-//            airlineService.findAirlineByAirlineName(airline.getAirlineName()).addFlight(flight);  // adding flight to Airline
+            airlineService.findAirlineByAirlineName(airline.getAirlineName()).addFlight(flight);  // adding flight to Airline
             logger.info("new flight '" + flight.getFlightNumber() + "' added to flight list");
-            logger.info("new flight '" + flight.getFlightNumber() + "' added to Airline: " + flight.getAirline());
+//            logger.info("new flight '" + flight.getFlightNumber() + "' added to Airline: " + flight.getAirline());
+            // Line 75 throws stack overflow exception (idk?)
             return "redirect:/flights";
         }
     }

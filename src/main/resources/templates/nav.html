@@ -3,12 +3,13 @@
 <body>
 <div th:fragment="navbar">
     <nav id="navbar" class="navbar row">
-        <a class="navbar-brand col-xl-4 col-xs-2 col-md-1" th:href="@{../home}">
+        <a class="navbar-brand col-xl-3 col-xs-2 col-md-1" th:href="@{../home}">
             <img id="logo" src="../static/media/favicon.png" alt="logo">
         </a>
         <a th:utext="#{home}" class="col-xl-2 col-xs-8 col-md-2" th:href="@{../home}">Home</a>
         <a th:utext="#{passengers_nav}" class="col-xl-2 col-xs-8 col-md-2" th:href="@{../passengers}">Passengers</a>
         <a th:utext="#{flights_nav}" class="col-xl-2 col-xs-8 col-md-2" th:href="@{../flights}">Flights</a>
+        <a th:utext="#{book_flight}" class="col-xl-2 col-xs-8 col-md-2" th:href="@{../flight-booking}">Book a Flight</a>
     </nav>
 </div>
 </body>

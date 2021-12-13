@@ -47,12 +47,12 @@ public class DataSeedingHibernate implements CommandLineRunner {
         Airline a6 = new Airline("Private Voyages", 11, 13);
         Airline a7 = new Airline("Iberia Airlines", 68, 120);
         Airline a8 = new Airline("All Nippon Airways", 220, 75);
-//        Airline a9 = new Airline("Emirates Airlines", 252, 161);
-//        Airline a10 = new Airline("Air Canada", 168, 194);
-//        Airline a11 = new Airline("KLM (Royal Dutch Airlines)", 149, 145);
-//        Airline a12 = new Airline("South African Airlines", 49, 42);
-//        Airline a13 = new Airline("Singapore Airlines", 145, 130);
-//        Airline a14 = new Airline("Golden Wings", 6, 17);
+        Airline a9 = new Airline("Emirates Airlines", 252, 161);
+        Airline a10 = new Airline("Air Canada", 168, 194);
+        Airline a11 = new Airline("KLM (Royal Dutch Airlines)", 149, 145);
+        Airline a12 = new Airline("South African Airlines", 49, 42);
+        Airline a13 = new Airline("Singapore Airlines", 145, 130);
+        Airline a14 = new Airline("Golden Wings", 6, 17);
 
         Passenger p1 = new Passenger("Johnny Thunder", 21, Gender.M, true);
         Passenger p2 = new Passenger("Anna Cooper", 23, Gender.F, true);
@@ -104,12 +104,12 @@ public class DataSeedingHibernate implements CommandLineRunner {
         airlines.save(a6);
         airlines.save(a7);
         airlines.save(a8);
-//        airlines.save(a9);
-//        airlines.save(a10);
-//        airlines.save(a11);
-//        airlines.save(a12);
-//        airlines.save(a13);
-//        airlines.save(a14);
+        airlines.save(a9);
+        airlines.save(a10);
+        airlines.save(a11);
+        airlines.save(a12);
+        airlines.save(a13);
+        airlines.save(a14);
 
         flights.save(f1);
         flights.save(f2);
