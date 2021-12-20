@@ -7,10 +7,10 @@ import ih.ifbs.services.PassengerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Comparator;
 import java.util.LinkedHashSet;
@@ -36,6 +36,17 @@ public class FlightBookingController {
         model.addAttribute("passengers", passengerService.getAllPassengers());
         model.addAttribute("flights", flightService.getAllFlights());
         return "flight-booking";
+    }
+
+//    @RequestMapping(value = "/booked", method = RequestMethod.POST)
+
+    @RequestMapping(value = "/booking", method = RequestMethod.POST)
+    public @ResponseBody String bookFlight(@ModelAttribute Passenger passenger,
+                             @ModelAttribute Flight flight) {
+        flight.addPassenger(passenger);
+        log.info("Passenger " + passenger.getId() + " booked the flight with the ID-" + flight.getId());
+//        return "redirect:../home";
+        return "OK";
     }
 
 }

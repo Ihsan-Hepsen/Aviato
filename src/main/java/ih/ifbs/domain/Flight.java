@@ -120,9 +120,9 @@ public class Flight extends EntityClass {
 
     @Override
     public String toString() {
-        return String.format("-%-18s, Flight: %-6s - %s to %s - Time: %d-%s-%d (%s) ~ Passengers: %d (%s Flight)\n",
+        return String.format("-%-18s, Flight: %-6s - %s to %s - Time: %d-%s-%d (%s)\n",
                 airline, flightNumber, departure.toUpperCase(), arrival.toUpperCase(),
                 scheduledOn.getYear(), scheduledOn.getMonth().toString().subSequence(0, 3), scheduledOn.getDayOfMonth(),
-                onTime ? "OnTime" : "Delayed", passengerList.size(), flightType.getValue());
+                onTime ? "OnTime" : "Delayed");
     }
 }

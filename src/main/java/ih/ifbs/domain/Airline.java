@@ -72,8 +72,8 @@ public class Airline extends EntityClass {
     public String toString() {
         String fixPrint = String.format("# %s - (Fleet Size: %d, Flights to: %d destinations, Current Flights: %d)",
                 airlineName.toUpperCase(), fleetSize, totalDestinations, flightList.size());
-        StringBuilder airlinePrint = new StringBuilder(fixPrint);
-        flightList.forEach(airlinePrint::append);
-        return airlinePrint.toString();
+//        StringBuilder airlinePrint = new StringBuilder(fixPrint);
+//        flightList.forEach(airlinePrint::append);
+        return fixPrint;
     }
 }
