@@ -7,13 +7,9 @@
             <img id="logo" src="../static/media/favicon.png" alt="logo">
         </a>
         <a th:utext="#{home}" class="col-xl-2 col-xs-8 col-md-2" th:href="@{../home}">Home</a>
-        <a th:utext="#{passengers_nav}" class="col-xl-2 col-xs-8 col-md-2" th:href="@{../passengers}">Passengers</a>
-        <a th:utext="#{flights_nav}" class="col-xl-2 col-xs-8 col-md-2" th:href="@{../flights}">Flights</a>
-        <a th:utext="#{book_flight}" class="col-xl-2 col-xs-8 col-md-2" th:href="@{../flight-booking}">Book a Flight</a>
+        <a th:utext="#{add_passenger_nav}" class="col-xl-2 col-xs-8 col-md-2" th:href="@{../passengers/add}">Add Passenger</a>
+        <a th:utext="#{add_flight_nav}" class="col-xl-1 col-xs-8 col-md-2" th:href="@{../flights/add}">Add Flight</a>
     </nav>
 </div>
 </body>
 </html>
-
-<!--<a th:utext="#{add_passenger_nav}" class="col-xl-2 col-xs-8 col-md-2" th:href="@{../passengers/add}">Add Passenger</a>-->
-<!--<a th:utext="#{add_flight_nav}" class="col-xl-1 col-xs-8 col-md-2" th:href="@{../flights/add}">Add Flight</a>-->
