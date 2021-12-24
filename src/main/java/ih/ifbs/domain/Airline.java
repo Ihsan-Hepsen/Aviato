@@ -75,5 +75,7 @@ public class Airline extends EntityClass {
 //        StringBuilder airlinePrint = new StringBuilder(fixPrint);
 //        flightList.forEach(airlinePrint::append);
         return fixPrint;
+        /* little part of the toString() is commented out
+            to prevent stack overflow issues (cannot be solved by using 'transient' keyword) */
     }
 }

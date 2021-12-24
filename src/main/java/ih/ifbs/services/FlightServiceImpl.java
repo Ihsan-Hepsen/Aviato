@@ -5,7 +5,6 @@ import ih.ifbs.exceptions.FlightNotFoundException;
 import ih.ifbs.repository.hsqlrepository.FlightRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 import java.util.Collection;
 import java.util.List;
@@ -36,7 +35,7 @@ public class FlightServiceImpl implements FlightService {
         return flightRepository.findAll();
     }
 
-    @Override
+    @Override // CONSOLE APPLICATION SPECIFIC
     public Collection<Flight> getAllFlights(String city, String date) {
         if (!city.equals("") && !date.equals("")) {
             return Stream.concat(filterFlightsByCity(city).stream(),
@@ -49,6 +48,7 @@ public class FlightServiceImpl implements FlightService {
         return getAllFlights();
     }
 
+    // CONSOLE APPLICATION SPECIFIC
     private List<Flight> filterFlightsByCity(String city) {
         Pattern cityPattern = Pattern.compile(city);
         List<Flight> filtered1 = flightRepository.findAll().stream()
@@ -66,6 +66,7 @@ public class FlightServiceImpl implements FlightService {
         return Stream.concat(filtered1.stream(), filtered2.stream()).collect(Collectors.toList());
     }
 
+    // CONSOLE APPLICATION SPECIFIC
     private List<Flight> filterFlightsByDate(String date) {
         Pattern datePattern = Pattern.compile(date);
         return flightRepository.findAll().stream()
