@@ -6,6 +6,17 @@
   flights or passengers can be added to the system. This system shows all the flights, passengers, and airlines that
   exists in its records(Database). Please see below sections to see the details of an entity class.
 
+
+## How To Run
+
+### **REQUIRED** JDK VERSION = **Java 16**.
+#### Run the application
+* Please make sure you have the project cloned in your machine
+* Open the project location in your terminal
+* Execute the following commands to run the application:
+  * `./gradlew bootRun`
+  * Navigate to [localhost:4506](http://localhost:4506) on your browser
+
 ## DOMAIN MODEL
 
 ### DOMAIN BRIEF
